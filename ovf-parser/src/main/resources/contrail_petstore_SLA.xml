@@ -1,0 +1,361 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<slasoi:SLATemplate xmlns:slasoi="http://www.slaatsoi.eu/slamodel" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.slaatsoi.eu/slamodel
+C:\SLA@SOI\platform\trunk\slamodel\src\main\resources\slasoi.xsd">
+<!--
+   Example of template for a Specific SLA without variable definitions
+
+   This example is intended to represent the SLA template as customized by the user,
+   to be used as input for a negotiation.
+
+   The template includes:
+   - two parties:
+     - the provider
+     - the customer, identified by its federation ID: ContrailCustomer
+   - two interface declarations, OVF-Descriptor-General and OVF-Descriptor-LAMP, representing respectively
+     - the OVF descriptor that the user will want to provision
+     - a VirtualSystem (representing a VM) inside an OVF descriptor
+   - three agreement terms
+     - the first agreement term specifies two guarantee states indicating
+       - a range (1..16) for the number of cores to be assigned to the VM (*)
+       - a range (128..10240) for the amount of memory to be assigned to the VM (*)
+     - the second agreement term specifies the percentage of availability of the resources specified in the OVF descriptor (greater than 50%)
+     - the third agreement term specifies the price of the product (with ID=1) which should represent a VM that can be provisioned
+
+   Differences from the SLA template that the customer has retrieved from the SLA repository:
+   - this template includes the customer party, while a normal SLA template should not include the indication of who is the customer
+   - this template includes the URL of a real OVF file, while a normal SLA template may have at most a placeholder (or nothing) (+)
+   - this template includes the OVF ID (MyLampService) of a VirtualSystem, while a SLA template may have a placeholder (+)
+   - this template specifies 0 as the price for the services, while a normal SLA template should specify the actual price requested by the provider
+
+   Notes:
+   * - Note that the referenced OVF descriptor (lamp.ovf) fixes the number of cores to 1 and memory to 256, thus it's compliant with the SLA
+   + - This in general is true but Contrail, to simplify things for the user, may already provide predefined {OVF descriptor, SLA template} pairs
+-->
+	<slasoi:Text/>
+	<slasoi:Properties/>
+	<slasoi:UUID>CT-Contrail-new-SLAT-8-NoVariable</slasoi:UUID>
+	<slasoi:ModelVersion>1</slasoi:ModelVersion>
+	
+	<slasoi:Party>
+		<slasoi:Text/>
+		<slasoi:Properties>
+			<slasoi:Entry>
+				<slasoi:Key>http://www.slaatsoi.org/slamodel#gslam_epr</slasoi:Key>
+				<slasoi:Value>http://localhost:8080/services/ISNegotiation?wsdl</slasoi:Value>
+			</slasoi:Entry>
+		</slasoi:Properties>
+		<slasoi:ID>ContrailProvider</slasoi:ID>
+		<slasoi:Role>http://www.slaatsoi.org/slamodel#provider</slasoi:Role>
+	</slasoi:Party>
+	
+	<slasoi:Party>
+		<slasoi:Text/>
+		<slasoi:Properties>
+			<slasoi:Entry>
+				<slasoi:Key>http://www.slaatsoi.org/slamodel#gslam_epr</slasoi:Key>
+				<slasoi:Value>http://localhost:8080/services/ISNegotiation?wsdl</slasoi:Value>
+			</slasoi:Entry>
+		</slasoi:Properties>
+		<slasoi:ID>ContrailCustomer</slasoi:ID>
+		<slasoi:Role>http://www.slaatsoi.org/slamodel#customer</slasoi:Role>
+	</slasoi:Party>
+
+
+	<slasoi:InterfaceDeclr>
+		<slasoi:Text>Interface for overall OVF</slasoi:Text>
+		<slasoi:Properties>
+			<slasoi:Entry>
+				<slasoi:Key>OVF_URL</slasoi:Key>
+				<slasoi:Value>file:///C:/lamp.ovf</slasoi:Value>
+			</slasoi:Entry>
+		</slasoi:Properties>
+		<slasoi:ID>OVF-Descriptor-General</slasoi:ID>
+		<slasoi:ProviderRef>ContrailProvider</slasoi:ProviderRef>
+		<slasoi:Endpoint>
+			<slasoi:Text/>
+			<slasoi:Properties/>
+			<slasoi:ID>OVF-Endpoint</slasoi:ID>
+			<slasoi:Location>VEP-ID</slasoi:Location>
+			<slasoi:Protocol>http://www.slaatsoi.org/slamodel#HTTP</slasoi:Protocol>
+		</slasoi:Endpoint>
+		<slasoi:Interface>
+			<slasoi:InterfaceResourceType>
+				<slasoi:Text/>
+				<slasoi:Properties/>
+				<slasoi:Name>OVFDescriptor</slasoi:Name>
+			</slasoi:InterfaceResourceType>
+		</slasoi:Interface>
+	</slasoi:InterfaceDeclr>
+
+	<slasoi:InterfaceDeclr>
+		<slasoi:Text>Interface to specific OVF item</slasoi:Text>
+		<slasoi:Properties>
+			<slasoi:Entry>
+				<slasoi:Key>OVF_URL</slasoi:Key>
+				<slasoi:Value>file:///C:/lamp.ovf</slasoi:Value>
+			</slasoi:Entry>
+		</slasoi:Properties>
+		<slasoi:ID>OVF-Descriptor-LAMP</slasoi:ID>
+		<slasoi:ProviderRef>ContrailProvider</slasoi:ProviderRef>
+		<slasoi:Endpoint>
+			<slasoi:Text/>
+			<slasoi:Properties>
+			  <slasoi:Entry>
+				<slasoi:Key>OVF_VirtualSystem_ID</slasoi:Key>
+				<slasoi:Value>et2</slasoi:Value>
+			  </slasoi:Entry>
+			</slasoi:Properties>
+			<slasoi:ID>VM-with-Linux-Apache-MySQL-PHP</slasoi:ID>
+			<slasoi:Location>VEP-ID</slasoi:Location>
+			<slasoi:Protocol>http://www.slaatsoi.org/slamodel#HTTP</slasoi:Protocol>
+		</slasoi:Endpoint>
+		<slasoi:Interface>
+			<slasoi:InterfaceResourceType>
+				<slasoi:Text/>
+				<slasoi:Properties/>
+				<slasoi:Name>OVFAppliance</slasoi:Name>
+			</slasoi:InterfaceResourceType>
+		</slasoi:Interface>
+	</slasoi:InterfaceDeclr>
+	
+	
+	
+	<slasoi:AgreementTerm>
+		<slasoi:Text/>
+		<slasoi:Properties/>
+		<slasoi:ID>all-in-one</slasoi:ID>
+
+		<slasoi:Guaranteed>
+			<slasoi:Text/>
+			<slasoi:Properties/>
+			<slasoi:State>
+				<slasoi:ID>CPU_CORES_STATE</slasoi:ID>
+				<slasoi:Priority xsi:nil="true"/>
+				<slasoi:Constraint>
+					<slasoi:TypeConstraintExpr>
+						<slasoi:Value>
+							<slasoi:FuncExpr>
+								<slasoi:Text/>
+								<slasoi:Properties/>
+								<slasoi:Operator>http://www.slaatsoi.org/resources#vm_cores</slasoi:Operator>
+								<slasoi:Parameter>
+								  <slasoi:ValueExpr>
+								    <slasoi:FuncExpr>
+								      <slasoi:Text/>
+								      <slasoi:Properties/>
+								      <slasoi:Operator>http://www.slaatsoi.org/coremodel#subset_of</slasoi:Operator>
+								      <slasoi:Parameter>
+									<slasoi:ID>OVF-Descriptor-LAMP</slasoi:ID>
+								      </slasoi:Parameter>
+								    </slasoi:FuncExpr>
+								  </slasoi:ValueExpr>
+								</slasoi:Parameter>
+							</slasoi:FuncExpr>
+						</slasoi:Value>
+						<slasoi:Domain>
+						  <slasoi:CompoundDomainExpr>
+						    <slasoi:Subexpression>
+						      <slasoi:SimpleDomainExpr>
+							<slasoi:ComparisonOp>http://www.slaatsoi.org/coremodel#greater_than</slasoi:ComparisonOp>
+							<slasoi:Value>
+							  <slasoi:CONST>
+							    <slasoi:Value>0</slasoi:Value>
+							    <slasoi:Datatype>http://www.w3.org/2001/XMLSchema#integer</slasoi:Datatype>
+							  </slasoi:CONST>
+							</slasoi:Value>
+						      </slasoi:SimpleDomainExpr>
+						    </slasoi:Subexpression>
+						    <slasoi:Subexpression>
+						      <slasoi:SimpleDomainExpr>
+							<slasoi:ComparisonOp>http://www.slaatsoi.org/coremodel#less_than_or_equals</slasoi:ComparisonOp>
+							<slasoi:Value>
+							  <slasoi:CONST>
+							    <slasoi:Value>16</slasoi:Value>
+							    <slasoi:Datatype>http://www.w3.org/2001/XMLSchema#integer</slasoi:Datatype>
+							  </slasoi:CONST>
+							</slasoi:Value>
+						      </slasoi:SimpleDomainExpr>
+						    </slasoi:Subexpression>
+						    <slasoi:LogicalOp>http://www.slaatsoi.org/coremodel#and</slasoi:LogicalOp>
+						  </slasoi:CompoundDomainExpr>
+						</slasoi:Domain>
+					</slasoi:TypeConstraintExpr>
+				</slasoi:Constraint>
+			</slasoi:State>
+		</slasoi:Guaranteed>
+
+		<slasoi:Guaranteed>
+			<slasoi:Text/>
+			<slasoi:Properties/>
+			<slasoi:State>
+				<slasoi:ID>MEMORY_STATE</slasoi:ID>
+				<slasoi:Priority xsi:nil="true"/>
+				<slasoi:Constraint>
+					<slasoi:TypeConstraintExpr>
+						<slasoi:Value>
+							<slasoi:FuncExpr>
+								<slasoi:Text/>
+								<slasoi:Properties/>
+								<slasoi:Operator>http://www.slaatsoi.org/resources#memory</slasoi:Operator>
+								<slasoi:Parameter>
+								  <slasoi:ValueExpr>
+								    <slasoi:FuncExpr>
+								      <slasoi:Text/>
+								      <slasoi:Properties/>
+								      <slasoi:Operator>http://www.slaatsoi.org/coremodel#subset_of</slasoi:Operator>
+								      <slasoi:Parameter>
+									<slasoi:ID>OVF-Descriptor-LAMP</slasoi:ID>
+								      </slasoi:Parameter>
+								    </slasoi:FuncExpr>
+								  </slasoi:ValueExpr>
+								</slasoi:Parameter>
+							</slasoi:FuncExpr>
+						</slasoi:Value>
+						<slasoi:Domain>
+						  <slasoi:CompoundDomainExpr>
+						    <slasoi:Subexpression>
+						      <slasoi:SimpleDomainExpr>
+							<slasoi:ComparisonOp>http://www.slaatsoi.org/coremodel#less_than_or_equals</slasoi:ComparisonOp>
+							<slasoi:Value>
+							  <slasoi:CONST>
+							    <slasoi:Value>10240</slasoi:Value>
+							    <slasoi:Datatype>http://www.slaatsoi.org/coremodel/units#MB</slasoi:Datatype>
+							  </slasoi:CONST>
+							</slasoi:Value>
+						      </slasoi:SimpleDomainExpr>
+						    </slasoi:Subexpression>
+						    <slasoi:Subexpression>
+						      <slasoi:SimpleDomainExpr>
+							<slasoi:ComparisonOp>http://www.slaatsoi.org/coremodel#greater_than</slasoi:ComparisonOp>
+							<slasoi:Value>
+							  <slasoi:CONST>
+							    <slasoi:Value>128</slasoi:Value>
+							    <slasoi:Datatype>http://www.slaatsoi.org/coremodel/units#MB</slasoi:Datatype>
+							  </slasoi:CONST>
+							</slasoi:Value>
+						      </slasoi:SimpleDomainExpr>
+						    </slasoi:Subexpression>
+						    <slasoi:LogicalOp>http://www.slaatsoi.org/coremodel#and</slasoi:LogicalOp>
+						  </slasoi:CompoundDomainExpr>
+						</slasoi:Domain>
+					</slasoi:TypeConstraintExpr>
+				</slasoi:Constraint>
+			</slasoi:State>
+		</slasoi:Guaranteed>
+	</slasoi:AgreementTerm>
+
+
+
+	<slasoi:AgreementTerm>
+		<slasoi:Text/>
+		<slasoi:Properties/>
+		<slasoi:ID>OverAllAvailability</slasoi:ID>
+
+		<slasoi:Guaranteed>
+			<slasoi:Text/>
+			<slasoi:Properties/>
+			<slasoi:State>
+				<slasoi:ID>AvailabilityState</slasoi:ID>
+				<slasoi:Priority xsi:nil="true"/>
+				<slasoi:Constraint>
+					<slasoi:TypeConstraintExpr>
+						<slasoi:Value>
+							<slasoi:FuncExpr>
+								<slasoi:Text/>
+								<slasoi:Properties/>
+								<slasoi:Operator>http://www.slaatsoi.org/commonTerms#availability</slasoi:Operator>
+								<slasoi:Parameter>
+									<slasoi:ID>OVF-Descriptor-General</slasoi:ID>
+								</slasoi:Parameter>
+							</slasoi:FuncExpr>
+						</slasoi:Value>
+						<slasoi:Domain>
+						  <slasoi:CompoundDomainExpr>
+						    <slasoi:Subexpression>
+						      <slasoi:SimpleDomainExpr>
+							<slasoi:ComparisonOp>http://www.slaatsoi.org/coremodel#less_than_or_equals</slasoi:ComparisonOp>
+							<slasoi:Value>
+							  <slasoi:CONST>
+							    <slasoi:Value>100</slasoi:Value>
+							    <slasoi:Datatype>http://www.slaatsoi.org/coremodel/units#percentage</slasoi:Datatype>
+							  </slasoi:CONST>
+							</slasoi:Value>
+						      </slasoi:SimpleDomainExpr>
+						    </slasoi:Subexpression>
+						    <slasoi:Subexpression>
+						      <slasoi:SimpleDomainExpr>
+							<slasoi:ComparisonOp>http://www.slaatsoi.org/coremodel#greater_than</slasoi:ComparisonOp>
+							<slasoi:Value>
+							  <slasoi:CONST>
+							    <slasoi:Value>50</slasoi:Value>
+							    <slasoi:Datatype>http://www.slaatsoi.org/coremodel/units#percentage</slasoi:Datatype>
+							  </slasoi:CONST>
+							</slasoi:Value>
+						      </slasoi:SimpleDomainExpr>
+						    </slasoi:Subexpression>
+						    <slasoi:LogicalOp>http://www.slaatsoi.org/coremodel#and</slasoi:LogicalOp>
+						  </slasoi:CompoundDomainExpr>
+						</slasoi:Domain>
+					</slasoi:TypeConstraintExpr>
+				</slasoi:Constraint>
+			</slasoi:State>
+		</slasoi:Guaranteed>
+	</slasoi:AgreementTerm>
+
+
+
+	<slasoi:AgreementTerm>
+		<slasoi:Text/>
+		<slasoi:Properties/>
+		<slasoi:ID>InfrastructurePrice</slasoi:ID>
+
+		<slasoi:Guaranteed>
+			<slasoi:Text/>
+			<slasoi:Properties/>
+			<slasoi:Action>
+				<slasoi:ID>PriceSpecificationAction</slasoi:ID>
+				<slasoi:ActorRef>http://www.slaatsoi.org/slamodel#provider</slasoi:ActorRef>
+				<slasoi:Policy>http://www.slaatsoi.org/slamodel#mandatory</slasoi:Policy>
+				<slasoi:Precondition>
+					<slasoi:Text/>
+					<slasoi:Properties/>
+					<slasoi:Operator>http://www.slaatsoi.org/coremodel#recovered</slasoi:Operator>
+					<slasoi:Parameter>
+						<slasoi:ValueExpr>
+							<slasoi:ID>PriceSpecificationAction</slasoi:ID>
+						</slasoi:ValueExpr>
+					</slasoi:Parameter>
+				</slasoi:Precondition>
+				<slasoi:Postcondition>
+					<slasoi:Text/>
+					<slasoi:Properties/>
+					<slasoi:ProductOfferingPrice>
+						<slasoi:ID>1</slasoi:ID>
+						<slasoi:Product>
+							<slasoi:Text>Product Description</slasoi:Text>
+							<slasoi:Properties/>
+							<slasoi:ID>1</slasoi:ID>
+							<slasoi:Name>VM</slasoi:Name>
+						</slasoi:Product>
+						<slasoi:Name/>
+						<slasoi:Description/>
+						<slasoi:BillingFrequency>http://www.slaatsoi.org/business#per_month</slasoi:BillingFrequency>
+						<slasoi:ValidFrom>2012-01-01T00:00:00</slasoi:ValidFrom>
+						<slasoi:ValidUntil>2012-12-31T23:59:59</slasoi:ValidUntil>
+						<slasoi:ComponentProdOfferingPrice>
+							<slasoi:ID>1</slasoi:ID>
+							<slasoi:PriceType>http://www.slaatsoi.org/business#one_time_charge</slasoi:PriceType>
+							<slasoi:Price>
+								<slasoi:Value>0</slasoi:Value>
+								<slasoi:Datatype>http://www.slaatsoi.org/coremodel/units#EUR</slasoi:Datatype>
+							</slasoi:Price>
+							<slasoi:Quantity>
+								<slasoi:Value>1</slasoi:Value>
+							</slasoi:Quantity>
+						</slasoi:ComponentProdOfferingPrice>
+					</slasoi:ProductOfferingPrice>
+				</slasoi:Postcondition>
+			</slasoi:Action>
+		</slasoi:Guaranteed>
+	</slasoi:AgreementTerm>
+</slasoi:SLATemplate>

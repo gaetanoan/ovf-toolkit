@@ -1,0 +1,50 @@
+<?xml version="1.0"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+  <modelVersion>4.0.0</modelVersion>
+  <groupId>org.ow2.contrail.common</groupId>
+  <artifactId>ovf-parser</artifactId>
+  <packaging>jar</packaging>
+  <version>1.1-SNAPSHOT</version>
+  <name>OVF Parser</name>
+
+  <parent> 
+	  <groupId>org.ow2.contrail.common</groupId>
+	  <artifactId>ovf-toolkit</artifactId>
+	  <version>1.1</version>
+	  <relativePath>../</relativePath>
+  </parent>
+	
+  <!--<parent> 
+    <groupId>org.ow2.contrail</groupId>
+    <artifactId>contrail</artifactId>
+    <version>0.4-SNAPSHOT</version>
+    <type>pom</type>
+  </parent>-->
+  
+  <dependencies>
+  <dependency>
+      <groupId>junit</groupId>
+      <artifactId>junit</artifactId>
+      <scope>compile</scope>
+    </dependency>
+    
+    <dependency>
+		<groupId>org.jgrapht</groupId>
+		<artifactId>jgrapht-core</artifactId>
+		<version>0.9.0</version>
+	</dependency>
+	<dependency>
+		<groupId>org.jgrapht</groupId>
+		<artifactId>jgrapht-ext</artifactId>
+		<version>0.9.0</version>
+	</dependency>
+    
+      <dependency>
+	<groupId>org.slasoi.generic-slamanager.syntaxconverter</groupId>
+	<artifactId>gslam-syntaxconverter</artifactId>
+	<version>0.1-SNAPSHOT</version>
+	<scope>compile</scope>
+       </dependency>
+  </dependencies>
+  
+</project>

@@ -1,0 +1,381 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Envelope xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://schemas.dmtf.org/ovf/envelope/1" xmlns:ovf="http://schemas.dmtf.org/ovf/envelope/1" xmlns:vssd="http://schemas.dmtf.org/wbem/wscim/1/cim-schema/2/CIM_VirtualSystemSettingData" xmlns:rasd="http://schemas.dmtf.org/wbem/wscim/1/cim-schema/2/CIM_ResourceAllocationSettingData">
+<References>
+<File ovf:id="image0" ovf:href="image0-delta.vmdk" ovf:size="123413"/>
+<File ovf:id="image1" ovf:href="image1-delta.vmdk" ovf:size="123413"/>
+<File ovf:id="image2" ovf:href="image2-delta.vmdk" ovf:size="123413"/>
+<File ovf:id="image3" ovf:href="image3-delta.vmdk" ovf:size="123413"/>
+<File ovf:id="image4" ovf:href="image4-delta.vmdk" ovf:size="123413"/>
+<File ovf:id="image5" ovf:href="image5-delta.vmdk" ovf:size="123413"/>
+</References>
+<DiskSection>
+<Info>Describes the set of virtual disks</Info>
+<Disk ovf:diskId="web" ovf:fileRef="image0" ovf:capacity="4294967296" ovf:parentRef="base" ovf:format="http://www.vmware.com/specifications/vmdk.html#streamOptimized"/>
+<Disk ovf:diskId="engine_frontend" ovf:fileRef="image1" ovf:capacity="4294967296" ovf:parentRef="base" ovf:format="http://www.vmware.com/specifications/vmdk.html#streamOptimized"/>
+<Disk ovf:diskId="engine_worker" ovf:fileRef="image2" ovf:capacity="4294967296" ovf:parentRef="base" ovf:format="http://www.vmware.com/specifications/vmdk.html#streamOptimized"/>
+<Disk ovf:diskId="engine_backend" ovf:fileRef="image3" ovf:capacity="4294967296" ovf:parentRef="base" ovf:format="http://www.vmware.com/specifications/vmdk.html#streamOptimized"/>
+<Disk ovf:diskId="db_frontend" ovf:fileRef="image4" ovf:capacity="4294967296" ovf:parentRef="base" ovf:format="http://www.vmware.com/specifications/vmdk.html#streamOptimized"/>
+<Disk ovf:diskId="db_backend" ovf:fileRef="image5" ovf:capacity="4294967296" ovf:parentRef="base" ovf:format="http://www.vmware.com/specifications/vmdk.html#streamOptimized"/>
+</DiskSection>
+<NetworkSection>
+<Info>List of logical networks used in the package</Info>
+</NetworkSection>
+<VirtualSystemCollection ovf:id="ContrailPetStore">
+<Info>No info for ContrailPetStore</Info>
+<Name>Should be a better name: ContrailPetStore</Name>
+<ProductSection>
+<Category ovf:msgid="category.network">Network's properties</Category>
+</ProductSection>
+<StartupSection>
+<Info>Missing startupsection</Info>
+</StartupSection>
+<VirtualSystem ovf:id="WebTier">
+<ProductSection>
+<Category ovf:msgid="category.network">Network's properties</Category>
+</ProductSection>
+<VirtualHardwareSection>
+<System>
+<vssd:ElementName>Virtual Hardware Family</vssd:ElementName>
+<vssd:InstanceID>0</vssd:InstanceID>
+<vssd:VirtualSystemType>vmx-04</vssd:VirtualSystemType>
+</System>
+<Item>
+<rasd:Description>Number of virtual CPUs</rasd:Description>
+<rasd:ElementName>1 virtual CPU</rasd:ElementName>
+<rasd:InstanceID>1</rasd:InstanceID>
+<rasd:ResourceType>3</rasd:ResourceType>
+<rasd:VirtualQuantity>1</rasd:VirtualQuantity>
+<rasd:AllocationUnits>1 virtual CPU</rasd:AllocationUnits>
+</Item>
+<Item>
+<rasd:Description>Memory Size</rasd:Description>
+<rasd:ElementName>256 MB of memory</rasd:ElementName>
+<rasd:InstanceID>2</rasd:InstanceID>
+<rasd:ResourceType>4</rasd:ResourceType>
+<rasd:AllocationUnits>256 MB of memory</rasd:AllocationUnits>
+</Item>
+<Item>
+<rasd:ElementName>Harddisk 1</rasd:ElementName>
+<rasd:InstanceID>22001</rasd:InstanceID>
+<rasd:ResourceType>17</rasd:ResourceType>
+<rasd:HostResource>ovf:/disk/web</rasd:HostResource>
+<rasd:Parent>1000</rasd:Parent>
+<rasd:AddressOnParent>0</rasd:AddressOnParent>
+</Item>
+<Item>
+<rasd:ElementName>Ethernet adapter on "VM Network"					</rasd:ElementName>
+<rasd:InstanceID>3</rasd:InstanceID>
+<rasd:ResourceType>10</rasd:ResourceType>
+<rasd:Connection>VM Network</rasd:Connection>
+<rasd:ResourcesSubType>PCNet32</rasd:ResourcesSubType>
+<rasd:AutomaticAllocation>true</rasd:AutomaticAllocation>
+<rasd:AddressOnParent>0</rasd:AddressOnParent>
+</Item>
+<Item>
+<rasd:ElementName>SCSI Controller 0 - LSI Logic</rasd:ElementName>
+<rasd:InstanceID>1000</rasd:InstanceID>
+<rasd:ResourceType>6</rasd:ResourceType>
+<rasd:ResourcesSubType>LsiLogic</rasd:ResourcesSubType>
+<rasd:AddressOnParent>0</rasd:AddressOnParent>
+</Item>
+</VirtualHardwareSection>
+</VirtualSystem>
+<VirtualSystemCollection ovf:id="EngineTier">
+<Info>No info for EngineTier</Info>
+<Name>Should be a better name: EngineTier</Name>
+<ProductSection>
+<Category ovf:msgid="category.network">Network's properties</Category>
+</ProductSection>
+<StartupSection>
+<Info>Missing startupsection</Info>
+</StartupSection>
+<VirtualSystem ovf:id="et1">
+<ProductSection>
+<Category ovf:msgid="category.network">Network's properties</Category>
+</ProductSection>
+<VirtualHardwareSection>
+<System>
+<vssd:ElementName>Virtual Hardware Family</vssd:ElementName>
+<vssd:InstanceID>0</vssd:InstanceID>
+<vssd:VirtualSystemType>vmx-04</vssd:VirtualSystemType>
+</System>
+<Item>
+<rasd:Description>Number of virtual CPUs</rasd:Description>
+<rasd:ElementName>1 virtual CPU</rasd:ElementName>
+<rasd:InstanceID>1</rasd:InstanceID>
+<rasd:ResourceType>3</rasd:ResourceType>
+<rasd:VirtualQuantity>1</rasd:VirtualQuantity>
+<rasd:AllocationUnits>1 virtual CPU</rasd:AllocationUnits>
+</Item>
+<Item>
+<rasd:Description>Memory Size</rasd:Description>
+<rasd:ElementName>256 MB of memory</rasd:ElementName>
+<rasd:InstanceID>2</rasd:InstanceID>
+<rasd:ResourceType>4</rasd:ResourceType>
+<rasd:AllocationUnits>256 MB of memory</rasd:AllocationUnits>
+</Item>
+<Item>
+<rasd:ElementName>Harddisk 1</rasd:ElementName>
+<rasd:InstanceID>22001</rasd:InstanceID>
+<rasd:ResourceType>17</rasd:ResourceType>
+<rasd:HostResource>ovf:/disk/engine_frontend</rasd:HostResource>
+<rasd:Parent>1000</rasd:Parent>
+<rasd:AddressOnParent>0</rasd:AddressOnParent>
+</Item>
+</VirtualHardwareSection>
+</VirtualSystem>
+<VirtualSystem ovf:id="et2">
+<ProductSection>
+<Category ovf:msgid="category.network">Network's properties</Category>
+</ProductSection>
+<VirtualHardwareSection>
+<System>
+<vssd:ElementName>Virtual Hardware Family</vssd:ElementName>
+<vssd:InstanceID>0</vssd:InstanceID>
+<vssd:VirtualSystemType>vmx-04</vssd:VirtualSystemType>
+</System>
+<Item>
+<rasd:Description>Number of virtual CPUs</rasd:Description>
+<rasd:ElementName>1 virtual CPU</rasd:ElementName>
+<rasd:InstanceID>1</rasd:InstanceID>
+<rasd:ResourceType>3</rasd:ResourceType>
+<rasd:VirtualQuantity>1</rasd:VirtualQuantity>
+<rasd:AllocationUnits>1 virtual CPU</rasd:AllocationUnits>
+</Item>
+<Item>
+<rasd:Description>Memory Size</rasd:Description>
+<rasd:ElementName>256 MB of memory</rasd:ElementName>
+<rasd:InstanceID>2</rasd:InstanceID>
+<rasd:ResourceType>4</rasd:ResourceType>
+<rasd:AllocationUnits>256 MB of memory</rasd:AllocationUnits>
+</Item>
+<Item>
+<rasd:ElementName>Harddisk 1</rasd:ElementName>
+<rasd:InstanceID>22001</rasd:InstanceID>
+<rasd:ResourceType>17</rasd:ResourceType>
+<rasd:HostResource>ovf:/disk/engine_worker</rasd:HostResource>
+<rasd:Parent>1000</rasd:Parent>
+<rasd:AddressOnParent>0</rasd:AddressOnParent>
+</Item>
+</VirtualHardwareSection>
+</VirtualSystem>
+<VirtualSystem ovf:id="et3">
+<ProductSection>
+<Category ovf:msgid="category.network">Network's properties</Category>
+</ProductSection>
+<VirtualHardwareSection>
+<System>
+<vssd:ElementName>Virtual Hardware Family</vssd:ElementName>
+<vssd:InstanceID>0</vssd:InstanceID>
+<vssd:VirtualSystemType>vmx-04</vssd:VirtualSystemType>
+</System>
+<Item>
+<rasd:Description>Number of virtual CPUs</rasd:Description>
+<rasd:ElementName>1 virtual CPU</rasd:ElementName>
+<rasd:InstanceID>1</rasd:InstanceID>
+<rasd:ResourceType>3</rasd:ResourceType>
+<rasd:VirtualQuantity>1</rasd:VirtualQuantity>
+<rasd:AllocationUnits>1 virtual CPU</rasd:AllocationUnits>
+</Item>
+<Item>
+<rasd:Description>Memory Size</rasd:Description>
+<rasd:ElementName>256 MB of memory</rasd:ElementName>
+<rasd:InstanceID>2</rasd:InstanceID>
+<rasd:ResourceType>4</rasd:ResourceType>
+<rasd:AllocationUnits>256 MB of memory</rasd:AllocationUnits>
+</Item>
+<Item>
+<rasd:ElementName>Harddisk 1</rasd:ElementName>
+<rasd:InstanceID>22001</rasd:InstanceID>
+<rasd:ResourceType>17</rasd:ResourceType>
+<rasd:HostResource>ovf:/disk/engine_worker</rasd:HostResource>
+<rasd:Parent>1000</rasd:Parent>
+<rasd:AddressOnParent>0</rasd:AddressOnParent>
+</Item>
+</VirtualHardwareSection>
+</VirtualSystem>
+<VirtualSystem ovf:id="et4">
+<ProductSection>
+<Category ovf:msgid="category.network">Network's properties</Category>
+</ProductSection>
+<VirtualHardwareSection>
+<System>
+<vssd:ElementName>Virtual Hardware Family</vssd:ElementName>
+<vssd:InstanceID>0</vssd:InstanceID>
+<vssd:VirtualSystemType>vmx-04</vssd:VirtualSystemType>
+</System>
+<Item>
+<rasd:Description>Number of virtual CPUs</rasd:Description>
+<rasd:ElementName>1 virtual CPU</rasd:ElementName>
+<rasd:InstanceID>1</rasd:InstanceID>
+<rasd:ResourceType>3</rasd:ResourceType>
+<rasd:VirtualQuantity>1</rasd:VirtualQuantity>
+<rasd:AllocationUnits>1 virtual CPU</rasd:AllocationUnits>
+</Item>
+<Item>
+<rasd:Description>Memory Size</rasd:Description>
+<rasd:ElementName>256 MB of memory</rasd:ElementName>
+<rasd:InstanceID>2</rasd:InstanceID>
+<rasd:ResourceType>4</rasd:ResourceType>
+<rasd:AllocationUnits>256 MB of memory</rasd:AllocationUnits>
+</Item>
+<Item>
+<rasd:ElementName>Harddisk 1</rasd:ElementName>
+<rasd:InstanceID>22001</rasd:InstanceID>
+<rasd:ResourceType>17</rasd:ResourceType>
+<rasd:HostResource>ovf:/disk/engine_backend</rasd:HostResource>
+<rasd:Parent>1000</rasd:Parent>
+<rasd:AddressOnParent>0</rasd:AddressOnParent>
+</Item>
+</VirtualHardwareSection>
+</VirtualSystem>
+</VirtualSystemCollection>
+<VirtualSystemCollection ovf:id="DBTier">
+<Info>No info for DBTier</Info>
+<Name>Should be a better name: DBTier</Name>
+<ProductSection>
+<Category ovf:msgid="category.network">Network's properties</Category>
+</ProductSection>
+<StartupSection>
+<Info>Missing startupsection</Info>
+</StartupSection>
+<VirtualSystem ovf:id="DB_frontend">
+<ProductSection>
+<Category ovf:msgid="category.network">Network's properties</Category>
+</ProductSection>
+<VirtualHardwareSection>
+<System>
+<vssd:ElementName>Virtual Hardware Family</vssd:ElementName>
+<vssd:InstanceID>0</vssd:InstanceID>
+<vssd:VirtualSystemType>vmx-04</vssd:VirtualSystemType>
+</System>
+<Item>
+<rasd:Description>Number of virtual CPUs</rasd:Description>
+<rasd:ElementName>1 virtual CPU</rasd:ElementName>
+<rasd:InstanceID>1</rasd:InstanceID>
+<rasd:ResourceType>3</rasd:ResourceType>
+<rasd:VirtualQuantity>1</rasd:VirtualQuantity>
+<rasd:AllocationUnits>1 virtual CPU</rasd:AllocationUnits>
+</Item>
+<Item>
+<rasd:Description>Memory Size</rasd:Description>
+<rasd:ElementName>256 MB of memory</rasd:ElementName>
+<rasd:InstanceID>2</rasd:InstanceID>
+<rasd:ResourceType>4</rasd:ResourceType>
+<rasd:AllocationUnits>256 MB of memory</rasd:AllocationUnits>
+</Item>
+<Item>
+<rasd:ElementName>Harddisk 1</rasd:ElementName>
+<rasd:InstanceID>22001</rasd:InstanceID>
+<rasd:ResourceType>17</rasd:ResourceType>
+<rasd:HostResource>ovf:/disk/db_frontend</rasd:HostResource>
+<rasd:Parent>1000</rasd:Parent>
+<rasd:AddressOnParent>0</rasd:AddressOnParent>
+</Item>
+</VirtualHardwareSection>
+</VirtualSystem>
+<VirtualSystem ovf:id="DB1">
+<ProductSection>
+<Category ovf:msgid="category.network">Network's properties</Category>
+</ProductSection>
+<VirtualHardwareSection>
+<System>
+<vssd:ElementName>Virtual Hardware Family</vssd:ElementName>
+<vssd:InstanceID>0</vssd:InstanceID>
+<vssd:VirtualSystemType>vmx-04</vssd:VirtualSystemType>
+</System>
+<Item>
+<rasd:Description>Number of virtual CPUs</rasd:Description>
+<rasd:ElementName>1 virtual CPU</rasd:ElementName>
+<rasd:InstanceID>1</rasd:InstanceID>
+<rasd:ResourceType>3</rasd:ResourceType>
+<rasd:VirtualQuantity>1</rasd:VirtualQuantity>
+<rasd:AllocationUnits>1 virtual CPU</rasd:AllocationUnits>
+</Item>
+<Item>
+<rasd:Description>Memory Size</rasd:Description>
+<rasd:ElementName>256 MB of memory</rasd:ElementName>
+<rasd:InstanceID>2</rasd:InstanceID>
+<rasd:ResourceType>4</rasd:ResourceType>
+<rasd:AllocationUnits>256 MB of memory</rasd:AllocationUnits>
+</Item>
+<Item>
+<rasd:ElementName>Harddisk 1</rasd:ElementName>
+<rasd:InstanceID>22001</rasd:InstanceID>
+<rasd:ResourceType>17</rasd:ResourceType>
+<rasd:HostResource>ovf:/disk/db_backend</rasd:HostResource>
+<rasd:Parent>1000</rasd:Parent>
+<rasd:AddressOnParent>0</rasd:AddressOnParent>
+</Item>
+<Item>
+<rasd:ElementName>Ethernet adapter on "VM Network"						</rasd:ElementName>
+<rasd:InstanceID>3</rasd:InstanceID>
+<rasd:ResourceType>10</rasd:ResourceType>
+<rasd:Connection>VM Network</rasd:Connection>
+<rasd:ResourcesSubType>PCNet32</rasd:ResourcesSubType>
+<rasd:AutomaticAllocation>true</rasd:AutomaticAllocation>
+<rasd:AddressOnParent>0</rasd:AddressOnParent>
+</Item>
+<Item>
+<rasd:ElementName>SCSI Controller 0 - LSI Logic</rasd:ElementName>
+<rasd:InstanceID>1000</rasd:InstanceID>
+<rasd:ResourceType>6</rasd:ResourceType>
+<rasd:ResourcesSubType>LsiLogic</rasd:ResourcesSubType>
+<rasd:AddressOnParent>0</rasd:AddressOnParent>
+</Item>
+</VirtualHardwareSection>
+</VirtualSystem>
+<VirtualSystem ovf:id="DB2">
+<ProductSection>
+<Category ovf:msgid="category.network">Network's properties</Category>
+</ProductSection>
+<VirtualHardwareSection>
+<System>
+<vssd:ElementName>Virtual Hardware Family</vssd:ElementName>
+<vssd:InstanceID>0</vssd:InstanceID>
+<vssd:VirtualSystemType>vmx-04</vssd:VirtualSystemType>
+</System>
+<Item>
+<rasd:Description>Number of virtual CPUs</rasd:Description>
+<rasd:ElementName>1 virtual CPU</rasd:ElementName>
+<rasd:InstanceID>1</rasd:InstanceID>
+<rasd:ResourceType>3</rasd:ResourceType>
+<rasd:VirtualQuantity>1</rasd:VirtualQuantity>
+<rasd:AllocationUnits>1 virtual CPU</rasd:AllocationUnits>
+</Item>
+<Item>
+<rasd:Description>Memory Size</rasd:Description>
+<rasd:ElementName>256 MB of memory</rasd:ElementName>
+<rasd:InstanceID>2</rasd:InstanceID>
+<rasd:ResourceType>4</rasd:ResourceType>
+<rasd:AllocationUnits>256 MB of memory</rasd:AllocationUnits>
+</Item>
+<Item>
+<rasd:ElementName>Harddisk 1</rasd:ElementName>
+<rasd:InstanceID>22001</rasd:InstanceID>
+<rasd:ResourceType>17</rasd:ResourceType>
+<rasd:HostResource>ovf:/disk/db_backend</rasd:HostResource>
+<rasd:Parent>1000</rasd:Parent>
+<rasd:AddressOnParent>0</rasd:AddressOnParent>
+</Item>
+<Item>
+<rasd:ElementName>Ethernet adapter on "VM Network"						</rasd:ElementName>
+<rasd:InstanceID>3</rasd:InstanceID>
+<rasd:ResourceType>10</rasd:ResourceType>
+<rasd:Connection>VM Network</rasd:Connection>
+<rasd:ResourcesSubType>PCNet32</rasd:ResourcesSubType>
+<rasd:AutomaticAllocation>true</rasd:AutomaticAllocation>
+<rasd:AddressOnParent>0</rasd:AddressOnParent>
+</Item>
+<Item>
+<rasd:ElementName>SCSI Controller 0 - LSI Logic</rasd:ElementName>
+<rasd:InstanceID>1000</rasd:InstanceID>
+<rasd:ResourceType>6</rasd:ResourceType>
+<rasd:ResourcesSubType>LsiLogic</rasd:ResourcesSubType>
+<rasd:AddressOnParent>0</rasd:AddressOnParent>
+</Item>
+</VirtualHardwareSection>
+</VirtualSystem>
+</VirtualSystemCollection>
+</VirtualSystemCollection>
+</Envelope>

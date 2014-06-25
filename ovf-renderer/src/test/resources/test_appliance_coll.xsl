@@ -1,0 +1,1 @@
+<?xml version='1.0' encoding='utf-8'?><xls:stylesheet version="1.0" xmlns:xls="http://www.w3.org/1999/XSL/Transform" xmlns:ovf="http://schemas.dmtf.org/ovf/envelope/1"><xls:template match="/"><xls:copy-of select="/@id" /></xls:template></xls:stylesheet>

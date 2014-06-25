@@ -1,0 +1,420 @@
+<?xml version="1.0" encoding="UTF-8"?><Envelope xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://schemas.dmtf.org/ovf/envelope/1" xmlns:ovf="http://schemas.dmtf.org/ovf/envelope/1" xmlns:vssd="http://schemas.dmtf.org/wbem/wscim/1/cim-schema/2/CIM_VirtualSystemSettingData" xmlns:rasd="http://schemas.dmtf.org/wbem/wscim/1/cim-schema/2/CIM_ResourceAllocationSettingData">
+<References>
+<File ovf:id="vm-image3" ovf:href="/home/giuseppe/ttylinux/ttylinux.img" ovf:size="180114671"/>
+<File ovf:id="vm-image4" ovf:href="/home/giuseppe/ttylinux/ttylinux.img" ovf:size="180114671"/>
+<File ovf:id="vm-image5" ovf:href="/home/giuseppe/ttylinux/ttylinux.img" ovf:size="180114671"/>
+<File ovf:id="vm-image1" ovf:href="/home/giuseppe/ttylinux/ttylinux.img" ovf:size="180114671"/>
+</References>
+<DiskSection>
+<Info>Describes the set of virtual disks</Info>
+<Disk ovf:diskId="disk3" ovf:fileRef="vm-image3" ovf:capacity="4294967296" ovf:format="http://www.vmware.com/specifications/vmdk.html#streamOptimized"/>
+<Disk ovf:diskId="disk4" ovf:fileRef="vm-image4" ovf:capacity="4294967296" ovf:format="http://www.vmware.com/specifications/vmdk.html#streamOptimized"/>
+<Disk ovf:diskId="disk5" ovf:fileRef="vm-image5" ovf:capacity="4294967296" ovf:format="http://www.vmware.com/specifications/vmdk.html#streamOptimized"/>
+<Disk ovf:diskId="disk1" ovf:fileRef="vm-image1" ovf:capacity="4294967296" ovf:format="http://www.vmware.com/specifications/vmdk.html#streamOptimized"/>
+</DiskSection>
+<NetworkSection>
+<Info>List of logical networks used in the package</Info>
+<Network ovf:name="VNet7">
+<Description ovf:msgid="network.description">The virtual network 7</Description>
+</Network>
+<Network ovf:name="VNet4">
+<Description ovf:msgid="network.description">The virtual network 4</Description>
+</Network>
+<Network ovf:name="VNet1">
+<Description ovf:msgid="network.description">The virtual network 1</Description>
+</Network>
+<Network ovf:name="VNet6">
+<Description ovf:msgid="network.description">The virtual network 6</Description>
+</Network>
+</NetworkSection>
+<VirtualSystem ovf:id="VirtualSystem1">
+<Info>No info for VirtualSystem1</Info>
+<ProductSection>
+<Info>No info for VirtualSystem1</Info>
+<Property ovf:key="ip@VNet7@3" ovf:value="dhcp@public" ovf:type="string"/>
+</ProductSection>
+<VirtualHardwareSection>
+<Info>No info for VirtualSystem1</Info>
+<System>
+<vssd:ElementName>Virtual Hardware Family</vssd:ElementName>
+<vssd:InstanceID>0</vssd:InstanceID>
+<vssd:VirtualSystemType>vmx-04</vssd:VirtualSystemType>
+</System>
+<Item ovf:required="true">
+<rasd:Description>Number of virtual CPUs</rasd:Description>
+<rasd:ElementName>1 virtual CPU</rasd:ElementName>
+<rasd:InstanceID>0</rasd:InstanceID>
+<rasd:ResourceType>3</rasd:ResourceType>
+<rasd:VirtualQuantity>1</rasd:VirtualQuantity>
+</Item>
+<Item ovf:required="true">
+<rasd:AllocationUnits>byte * 2^20</rasd:AllocationUnits>
+<rasd:Description>Memory Size</rasd:Description>
+<rasd:ElementName>512 MB of memory</rasd:ElementName>
+<rasd:InstanceID>0</rasd:InstanceID>
+<rasd:ResourceType>4</rasd:ResourceType>
+<rasd:VirtualQuantity>512</rasd:VirtualQuantity>
+</Item>
+<Item ovf:required="true">
+<rasd:AddressOnParent>0</rasd:AddressOnParent>
+<rasd:ElementName>Harddisk 1</rasd:ElementName>
+<rasd:HostResource>ovf:/disk/disk3</rasd:HostResource>
+<rasd:InstanceID>0</rasd:InstanceID>
+<rasd:Parent>1000</rasd:Parent>
+<rasd:ResourceType>17</rasd:ResourceType>
+</Item>
+<Item ovf:required="true">
+<rasd:AddressOnParent>0</rasd:AddressOnParent>
+<rasd:ElementName>Harddisk 2</rasd:ElementName>
+<rasd:HostResource>ovf:/disk/disk3</rasd:HostResource>
+<rasd:InstanceID>0</rasd:InstanceID>
+<rasd:Parent>1000</rasd:Parent>
+<rasd:ResourceType>17</rasd:ResourceType>
+</Item>
+<Item ovf:required="true">
+<rasd:AddressOnParent>0</rasd:AddressOnParent>
+<rasd:ElementName>Harddisk 3</rasd:ElementName>
+<rasd:HostResource>ovf:/disk/disk3</rasd:HostResource>
+<rasd:InstanceID>0</rasd:InstanceID>
+<rasd:Parent>1000</rasd:Parent>
+<rasd:ResourceType>17</rasd:ResourceType>
+</Item>
+<Item ovf:required="true">
+<rasd:AddressOnParent>0</rasd:AddressOnParent>
+<rasd:ElementName>Harddisk 4</rasd:ElementName>
+<rasd:HostResource>ovf:/disk/disk3</rasd:HostResource>
+<rasd:InstanceID>0</rasd:InstanceID>
+<rasd:Parent>1000</rasd:Parent>
+<rasd:ResourceType>17</rasd:ResourceType>
+</Item>
+<Item ovf:required="true">
+<rasd:AddressOnParent>0</rasd:AddressOnParent>
+<rasd:ElementName>Harddisk 5</rasd:ElementName>
+<rasd:HostResource>ovf:/disk/disk3</rasd:HostResource>
+<rasd:InstanceID>0</rasd:InstanceID>
+<rasd:Parent>1000</rasd:Parent>
+<rasd:ResourceType>17</rasd:ResourceType>
+</Item>
+<Item ovf:required="true">
+<rasd:AutomaticAllocation>true</rasd:AutomaticAllocation>
+<rasd:Connection>VNet7</rasd:Connection>
+<rasd:ElementName>Ethernet Adapter on "VNet7"</rasd:ElementName>
+<rasd:InstanceID>0</rasd:InstanceID>
+<rasd:ResourceSubType>PCNet32</rasd:ResourceSubType>
+<rasd:ResourceType>10</rasd:ResourceType>
+</Item>
+</VirtualHardwareSection>
+</VirtualSystem>
+<VirtualSystem ovf:id="VirtualSystem2">
+<Info>No info for VirtualSystem2</Info>
+<ProductSection>
+<Info>No info for VirtualSystem2</Info>
+<Property ovf:key="ip@VNet4@3" ovf:value="dhcp@public" ovf:type="string"/>
+</ProductSection>
+<VirtualHardwareSection>
+<Info>No info for VirtualSystem2</Info>
+<System>
+<vssd:ElementName>Virtual Hardware Family</vssd:ElementName>
+<vssd:InstanceID>0</vssd:InstanceID>
+<vssd:VirtualSystemType>vmx-04</vssd:VirtualSystemType>
+</System>
+<Item ovf:required="true">
+<rasd:Description>Number of virtual CPUs</rasd:Description>
+<rasd:ElementName>1 virtual CPU</rasd:ElementName>
+<rasd:InstanceID>0</rasd:InstanceID>
+<rasd:ResourceType>3</rasd:ResourceType>
+<rasd:VirtualQuantity>1</rasd:VirtualQuantity>
+</Item>
+<Item ovf:required="true">
+<rasd:AllocationUnits>byte * 2^20</rasd:AllocationUnits>
+<rasd:Description>Memory Size</rasd:Description>
+<rasd:ElementName>512 MB of memory</rasd:ElementName>
+<rasd:InstanceID>0</rasd:InstanceID>
+<rasd:ResourceType>4</rasd:ResourceType>
+<rasd:VirtualQuantity>512</rasd:VirtualQuantity>
+</Item>
+<Item ovf:required="true">
+<rasd:AddressOnParent>0</rasd:AddressOnParent>
+<rasd:ElementName>Harddisk 1</rasd:ElementName>
+<rasd:HostResource>ovf:/disk/disk4</rasd:HostResource>
+<rasd:InstanceID>0</rasd:InstanceID>
+<rasd:Parent>1000</rasd:Parent>
+<rasd:ResourceType>17</rasd:ResourceType>
+</Item>
+<Item ovf:required="true">
+<rasd:AddressOnParent>0</rasd:AddressOnParent>
+<rasd:ElementName>Harddisk 2</rasd:ElementName>
+<rasd:HostResource>ovf:/disk/disk4</rasd:HostResource>
+<rasd:InstanceID>0</rasd:InstanceID>
+<rasd:Parent>1000</rasd:Parent>
+<rasd:ResourceType>17</rasd:ResourceType>
+</Item>
+<Item ovf:required="true">
+<rasd:AddressOnParent>0</rasd:AddressOnParent>
+<rasd:ElementName>Harddisk 3</rasd:ElementName>
+<rasd:HostResource>ovf:/disk/disk4</rasd:HostResource>
+<rasd:InstanceID>0</rasd:InstanceID>
+<rasd:Parent>1000</rasd:Parent>
+<rasd:ResourceType>17</rasd:ResourceType>
+</Item>
+<Item ovf:required="true">
+<rasd:AddressOnParent>0</rasd:AddressOnParent>
+<rasd:ElementName>Harddisk 4</rasd:ElementName>
+<rasd:HostResource>ovf:/disk/disk4</rasd:HostResource>
+<rasd:InstanceID>0</rasd:InstanceID>
+<rasd:Parent>1000</rasd:Parent>
+<rasd:ResourceType>17</rasd:ResourceType>
+</Item>
+<Item ovf:required="true">
+<rasd:AddressOnParent>0</rasd:AddressOnParent>
+<rasd:ElementName>Harddisk 5</rasd:ElementName>
+<rasd:HostResource>ovf:/disk/disk4</rasd:HostResource>
+<rasd:InstanceID>0</rasd:InstanceID>
+<rasd:Parent>1000</rasd:Parent>
+<rasd:ResourceType>17</rasd:ResourceType>
+</Item>
+<Item ovf:required="true">
+<rasd:AutomaticAllocation>true</rasd:AutomaticAllocation>
+<rasd:Connection>VNet4</rasd:Connection>
+<rasd:ElementName>Ethernet Adapter on "VNet4"</rasd:ElementName>
+<rasd:InstanceID>0</rasd:InstanceID>
+<rasd:ResourceSubType>PCNet32</rasd:ResourceSubType>
+<rasd:ResourceType>10</rasd:ResourceType>
+</Item>
+</VirtualHardwareSection>
+</VirtualSystem>
+<VirtualSystem ovf:id="VirtualSystem3">
+<Info>No info for VirtualSystem3</Info>
+<ProductSection>
+<Info>No info for VirtualSystem3</Info>
+<Property ovf:key="ip@VNet1@3" ovf:value="dhcp@public" ovf:type="string"/>
+</ProductSection>
+<VirtualHardwareSection>
+<Info>No info for VirtualSystem3</Info>
+<System>
+<vssd:ElementName>Virtual Hardware Family</vssd:ElementName>
+<vssd:InstanceID>0</vssd:InstanceID>
+<vssd:VirtualSystemType>vmx-04</vssd:VirtualSystemType>
+</System>
+<Item ovf:required="true">
+<rasd:Description>Number of virtual CPUs</rasd:Description>
+<rasd:ElementName>1 virtual CPU</rasd:ElementName>
+<rasd:InstanceID>0</rasd:InstanceID>
+<rasd:ResourceType>3</rasd:ResourceType>
+<rasd:VirtualQuantity>1</rasd:VirtualQuantity>
+</Item>
+<Item ovf:required="true">
+<rasd:AllocationUnits>byte * 2^20</rasd:AllocationUnits>
+<rasd:Description>Memory Size</rasd:Description>
+<rasd:ElementName>512 MB of memory</rasd:ElementName>
+<rasd:InstanceID>0</rasd:InstanceID>
+<rasd:ResourceType>4</rasd:ResourceType>
+<rasd:VirtualQuantity>512</rasd:VirtualQuantity>
+</Item>
+<Item ovf:required="true">
+<rasd:AddressOnParent>0</rasd:AddressOnParent>
+<rasd:ElementName>Harddisk 1</rasd:ElementName>
+<rasd:HostResource>ovf:/disk/disk5</rasd:HostResource>
+<rasd:InstanceID>0</rasd:InstanceID>
+<rasd:Parent>1000</rasd:Parent>
+<rasd:ResourceType>17</rasd:ResourceType>
+</Item>
+<Item ovf:required="true">
+<rasd:AddressOnParent>0</rasd:AddressOnParent>
+<rasd:ElementName>Harddisk 2</rasd:ElementName>
+<rasd:HostResource>ovf:/disk/disk5</rasd:HostResource>
+<rasd:InstanceID>0</rasd:InstanceID>
+<rasd:Parent>1000</rasd:Parent>
+<rasd:ResourceType>17</rasd:ResourceType>
+</Item>
+<Item ovf:required="true">
+<rasd:AddressOnParent>0</rasd:AddressOnParent>
+<rasd:ElementName>Harddisk 3</rasd:ElementName>
+<rasd:HostResource>ovf:/disk/disk5</rasd:HostResource>
+<rasd:InstanceID>0</rasd:InstanceID>
+<rasd:Parent>1000</rasd:Parent>
+<rasd:ResourceType>17</rasd:ResourceType>
+</Item>
+<Item ovf:required="true">
+<rasd:AddressOnParent>0</rasd:AddressOnParent>
+<rasd:ElementName>Harddisk 4</rasd:ElementName>
+<rasd:HostResource>ovf:/disk/disk5</rasd:HostResource>
+<rasd:InstanceID>0</rasd:InstanceID>
+<rasd:Parent>1000</rasd:Parent>
+<rasd:ResourceType>17</rasd:ResourceType>
+</Item>
+<Item ovf:required="true">
+<rasd:AddressOnParent>0</rasd:AddressOnParent>
+<rasd:ElementName>Harddisk 5</rasd:ElementName>
+<rasd:HostResource>ovf:/disk/disk5</rasd:HostResource>
+<rasd:InstanceID>0</rasd:InstanceID>
+<rasd:Parent>1000</rasd:Parent>
+<rasd:ResourceType>17</rasd:ResourceType>
+</Item>
+<Item ovf:required="true">
+<rasd:AutomaticAllocation>true</rasd:AutomaticAllocation>
+<rasd:Connection>VNet1</rasd:Connection>
+<rasd:ElementName>Ethernet Adapter on "VNet1"</rasd:ElementName>
+<rasd:InstanceID>0</rasd:InstanceID>
+<rasd:ResourceSubType>PCNet32</rasd:ResourceSubType>
+<rasd:ResourceType>10</rasd:ResourceType>
+</Item>
+</VirtualHardwareSection>
+</VirtualSystem>
+<VirtualSystem ovf:id="VirtualSystem4">
+<Info>No info for VirtualSystem4</Info>
+<ProductSection>
+<Info>No info for VirtualSystem4</Info>
+<Property ovf:key="ip@VNet7@3" ovf:value="dhcp@public" ovf:type="string"/>
+</ProductSection>
+<VirtualHardwareSection>
+<Info>No info for VirtualSystem4</Info>
+<System>
+<vssd:ElementName>Virtual Hardware Family</vssd:ElementName>
+<vssd:InstanceID>0</vssd:InstanceID>
+<vssd:VirtualSystemType>vmx-04</vssd:VirtualSystemType>
+</System>
+<Item ovf:required="true">
+<rasd:Description>Number of virtual CPUs</rasd:Description>
+<rasd:ElementName>1 virtual CPU</rasd:ElementName>
+<rasd:InstanceID>0</rasd:InstanceID>
+<rasd:ResourceType>3</rasd:ResourceType>
+<rasd:VirtualQuantity>1</rasd:VirtualQuantity>
+</Item>
+<Item ovf:required="true">
+<rasd:AllocationUnits>byte * 2^20</rasd:AllocationUnits>
+<rasd:Description>Memory Size</rasd:Description>
+<rasd:ElementName>512 MB of memory</rasd:ElementName>
+<rasd:InstanceID>0</rasd:InstanceID>
+<rasd:ResourceType>4</rasd:ResourceType>
+<rasd:VirtualQuantity>512</rasd:VirtualQuantity>
+</Item>
+<Item ovf:required="true">
+<rasd:AddressOnParent>0</rasd:AddressOnParent>
+<rasd:ElementName>Harddisk 1</rasd:ElementName>
+<rasd:HostResource>ovf:/disk/disk5</rasd:HostResource>
+<rasd:InstanceID>0</rasd:InstanceID>
+<rasd:Parent>1000</rasd:Parent>
+<rasd:ResourceType>17</rasd:ResourceType>
+</Item>
+<Item ovf:required="true">
+<rasd:AddressOnParent>0</rasd:AddressOnParent>
+<rasd:ElementName>Harddisk 2</rasd:ElementName>
+<rasd:HostResource>ovf:/disk/disk5</rasd:HostResource>
+<rasd:InstanceID>0</rasd:InstanceID>
+<rasd:Parent>1000</rasd:Parent>
+<rasd:ResourceType>17</rasd:ResourceType>
+</Item>
+<Item ovf:required="true">
+<rasd:AddressOnParent>0</rasd:AddressOnParent>
+<rasd:ElementName>Harddisk 3</rasd:ElementName>
+<rasd:HostResource>ovf:/disk/disk5</rasd:HostResource>
+<rasd:InstanceID>0</rasd:InstanceID>
+<rasd:Parent>1000</rasd:Parent>
+<rasd:ResourceType>17</rasd:ResourceType>
+</Item>
+<Item ovf:required="true">
+<rasd:AddressOnParent>0</rasd:AddressOnParent>
+<rasd:ElementName>Harddisk 4</rasd:ElementName>
+<rasd:HostResource>ovf:/disk/disk5</rasd:HostResource>
+<rasd:InstanceID>0</rasd:InstanceID>
+<rasd:Parent>1000</rasd:Parent>
+<rasd:ResourceType>17</rasd:ResourceType>
+</Item>
+<Item ovf:required="true">
+<rasd:AddressOnParent>0</rasd:AddressOnParent>
+<rasd:ElementName>Harddisk 5</rasd:ElementName>
+<rasd:HostResource>ovf:/disk/disk5</rasd:HostResource>
+<rasd:InstanceID>0</rasd:InstanceID>
+<rasd:Parent>1000</rasd:Parent>
+<rasd:ResourceType>17</rasd:ResourceType>
+</Item>
+<Item ovf:required="true">
+<rasd:AutomaticAllocation>true</rasd:AutomaticAllocation>
+<rasd:Connection>VNet7</rasd:Connection>
+<rasd:ElementName>Ethernet Adapter on "VNet7"</rasd:ElementName>
+<rasd:InstanceID>0</rasd:InstanceID>
+<rasd:ResourceSubType>PCNet32</rasd:ResourceSubType>
+<rasd:ResourceType>10</rasd:ResourceType>
+</Item>
+</VirtualHardwareSection>
+</VirtualSystem>
+<VirtualSystem ovf:id="VirtualSystem5">
+<Info>No info for VirtualSystem5</Info>
+<ProductSection>
+<Info>No info for VirtualSystem5</Info>
+<Property ovf:key="ip@VNet6@3" ovf:value="dhcp@public" ovf:type="string"/>
+</ProductSection>
+<VirtualHardwareSection>
+<Info>No info for VirtualSystem5</Info>
+<System>
+<vssd:ElementName>Virtual Hardware Family</vssd:ElementName>
+<vssd:InstanceID>0</vssd:InstanceID>
+<vssd:VirtualSystemType>vmx-04</vssd:VirtualSystemType>
+</System>
+<Item ovf:required="true">
+<rasd:Description>Number of virtual CPUs</rasd:Description>
+<rasd:ElementName>1 virtual CPU</rasd:ElementName>
+<rasd:InstanceID>0</rasd:InstanceID>
+<rasd:ResourceType>3</rasd:ResourceType>
+<rasd:VirtualQuantity>1</rasd:VirtualQuantity>
+</Item>
+<Item ovf:required="true">
+<rasd:AllocationUnits>byte * 2^20</rasd:AllocationUnits>
+<rasd:Description>Memory Size</rasd:Description>
+<rasd:ElementName>512 MB of memory</rasd:ElementName>
+<rasd:InstanceID>0</rasd:InstanceID>
+<rasd:ResourceType>4</rasd:ResourceType>
+<rasd:VirtualQuantity>512</rasd:VirtualQuantity>
+</Item>
+<Item ovf:required="true">
+<rasd:AddressOnParent>0</rasd:AddressOnParent>
+<rasd:ElementName>Harddisk 1</rasd:ElementName>
+<rasd:HostResource>ovf:/disk/disk1</rasd:HostResource>
+<rasd:InstanceID>0</rasd:InstanceID>
+<rasd:Parent>1000</rasd:Parent>
+<rasd:ResourceType>17</rasd:ResourceType>
+</Item>
+<Item ovf:required="true">
+<rasd:AddressOnParent>0</rasd:AddressOnParent>
+<rasd:ElementName>Harddisk 2</rasd:ElementName>
+<rasd:HostResource>ovf:/disk/disk1</rasd:HostResource>
+<rasd:InstanceID>0</rasd:InstanceID>
+<rasd:Parent>1000</rasd:Parent>
+<rasd:ResourceType>17</rasd:ResourceType>
+</Item>
+<Item ovf:required="true">
+<rasd:AddressOnParent>0</rasd:AddressOnParent>
+<rasd:ElementName>Harddisk 3</rasd:ElementName>
+<rasd:HostResource>ovf:/disk/disk1</rasd:HostResource>
+<rasd:InstanceID>0</rasd:InstanceID>
+<rasd:Parent>1000</rasd:Parent>
+<rasd:ResourceType>17</rasd:ResourceType>
+</Item>
+<Item ovf:required="true">
+<rasd:AddressOnParent>0</rasd:AddressOnParent>
+<rasd:ElementName>Harddisk 4</rasd:ElementName>
+<rasd:HostResource>ovf:/disk/disk1</rasd:HostResource>
+<rasd:InstanceID>0</rasd:InstanceID>
+<rasd:Parent>1000</rasd:Parent>
+<rasd:ResourceType>17</rasd:ResourceType>
+</Item>
+<Item ovf:required="true">
+<rasd:AddressOnParent>0</rasd:AddressOnParent>
+<rasd:ElementName>Harddisk 5</rasd:ElementName>
+<rasd:HostResource>ovf:/disk/disk1</rasd:HostResource>
+<rasd:InstanceID>0</rasd:InstanceID>
+<rasd:Parent>1000</rasd:Parent>
+<rasd:ResourceType>17</rasd:ResourceType>
+</Item>
+<Item ovf:required="true">
+<rasd:AutomaticAllocation>true</rasd:AutomaticAllocation>
+<rasd:Connection>VNet6</rasd:Connection>
+<rasd:ElementName>Ethernet Adapter on "VNet6"</rasd:ElementName>
+<rasd:InstanceID>0</rasd:InstanceID>
+<rasd:ResourceSubType>PCNet32</rasd:ResourceSubType>
+<rasd:ResourceType>10</rasd:ResourceType>
+</Item>
+</VirtualHardwareSection>
+</VirtualSystem>
+</Envelope>

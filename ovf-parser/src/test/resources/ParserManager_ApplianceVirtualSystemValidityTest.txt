@@ -1,0 +1,870 @@
+File test No. 0
+	analysis VIRTUALSYSTEM: ContrailPetStore
+		virtual system: WebTier
+		************************
+			instanceId = 1
+			resourceType = 3
+			elementName = 1 virtual CPU
+			description = Number of virtual CPUs
+			required = true
+			virtualQuantity = 1
+			allocationUnits = null
+		************************
+			instanceId = 2
+			resourceType = 4
+			elementName = 256 MB of memory
+			description = Memory Size
+			required = true
+			virtualQuantity = 256
+			allocationUnits = byte * 2^20
+		************************
+			instanceId = 22001
+			resourceType = 17
+			elementName = Harddisk 1
+			description = null
+			required = true
+			hostResource = ovf:/disk/web
+			addressOnParent = 0
+			parent = 1000
+		************************
+			instanceId = 3
+			resourceType = 10
+			elementName = Ethernet adapter on "VM Network"
+			description = null
+			required = true
+			addressOnParent = null
+			automaticAllocation = true
+			connection = VM Network
+			resourceSubType = PCNet32
+		************************
+			instanceId = 1000
+			resourceType = 6
+			elementName = SCSI Controller 0 - LSI Logic
+			description = null
+			required = true
+			address = 1
+			resourceSubType = LsiLogic
+		******end virtualhardware of WebTier*******
+		virtual system: et1
+		************************
+			instanceId = 1
+			resourceType = 3
+			elementName = 1 virtual CPU
+			description = Number of virtual CPUs
+			required = true
+			virtualQuantity = 1
+			allocationUnits = null
+		************************
+			instanceId = 2
+			resourceType = 4
+			elementName = 256 MB of memory
+			description = Memory Size
+			required = true
+			virtualQuantity = 256
+			allocationUnits = byte * 2^20
+		************************
+			instanceId = 22001
+			resourceType = 17
+			elementName = Harddisk 1
+			description = null
+			required = true
+			hostResource = ovf:/disk/engine_frontend
+			addressOnParent = 0
+			parent = 1000
+		******end virtualhardware of et1*******
+		virtual system: et2
+		************************
+			instanceId = 1
+			resourceType = 3
+			elementName = 1 virtual CPU
+			description = Number of virtual CPUs
+			required = true
+			virtualQuantity = 1
+			allocationUnits = null
+		************************
+			instanceId = 2
+			resourceType = 4
+			elementName = 256 MB of memory
+			description = Memory Size
+			required = true
+			virtualQuantity = 256
+			allocationUnits = byte * 2^20
+		************************
+			instanceId = 22001
+			resourceType = 17
+			elementName = Harddisk 1
+			description = null
+			required = true
+			hostResource = ovf:/disk/engine_worker
+			addressOnParent = 0
+			parent = 1000
+		******end virtualhardware of et2*******
+		virtual system: et3
+		************************
+			instanceId = 1
+			resourceType = 3
+			elementName = 1 virtual CPU
+			description = Number of virtual CPUs
+			required = true
+			virtualQuantity = 1
+			allocationUnits = null
+		************************
+			instanceId = 2
+			resourceType = 4
+			elementName = 256 MB of memory
+			description = Memory Size
+			required = true
+			virtualQuantity = 256
+			allocationUnits = byte * 2^20
+		************************
+			instanceId = 22001
+			resourceType = 17
+			elementName = Harddisk 1
+			description = null
+			required = true
+			hostResource = ovf:/disk/engine_worker
+			addressOnParent = 0
+			parent = 1000
+		******end virtualhardware of et3*******
+		virtual system: et4
+		************************
+			instanceId = 1
+			resourceType = 3
+			elementName = 1 virtual CPU
+			description = Number of virtual CPUs
+			required = true
+			virtualQuantity = 1
+			allocationUnits = null
+		************************
+			instanceId = 2
+			resourceType = 4
+			elementName = 256 MB of memory
+			description = Memory Size
+			required = true
+			virtualQuantity = 256
+			allocationUnits = byte * 2^20
+		************************
+			instanceId = 22001
+			resourceType = 17
+			elementName = Harddisk 1
+			description = null
+			required = true
+			hostResource = ovf:/disk/engine_backend
+			addressOnParent = 0
+			parent = 1000
+		******end virtualhardware of et4*******
+		virtual system: DB_frontend
+		************************
+			instanceId = 1
+			resourceType = 3
+			elementName = 1 virtual CPU
+			description = Number of virtual CPUs
+			required = true
+			virtualQuantity = 1
+			allocationUnits = null
+		************************
+			instanceId = 2
+			resourceType = 4
+			elementName = 256 MB of memory
+			description = Memory Size
+			required = true
+			virtualQuantity = 256
+			allocationUnits = byte * 2^20
+		************************
+			instanceId = 22001
+			resourceType = 17
+			elementName = Harddisk 1
+			description = null
+			required = true
+			hostResource = ovf:/disk/db_frontend
+			addressOnParent = 0
+			parent = 1000
+		******end virtualhardware of DB_frontend*******
+		virtual system: DB1
+		************************
+			instanceId = 1
+			resourceType = 3
+			elementName = 1 virtual CPU
+			description = Number of virtual CPUs
+			required = true
+			virtualQuantity = 1
+			allocationUnits = null
+		************************
+			instanceId = 2
+			resourceType = 4
+			elementName = 256 MB of memory
+			description = Memory Size
+			required = true
+			virtualQuantity = 256
+			allocationUnits = byte * 2^20
+		************************
+			instanceId = 22001
+			resourceType = 17
+			elementName = Harddisk 1
+			description = null
+			required = true
+			hostResource = ovf:/disk/db_backend
+			addressOnParent = 0
+			parent = 1000
+		************************
+			instanceId = 3
+			resourceType = 10
+			elementName = Ethernet adapter on "VM Network"
+			description = null
+			required = true
+			addressOnParent = null
+			automaticAllocation = true
+			connection = VM Network
+			resourceSubType = PCNet32
+		************************
+			instanceId = 1000
+			resourceType = 6
+			elementName = SCSI Controller 0 - LSI Logic
+			description = null
+			required = true
+			address = 1
+			resourceSubType = LsiLogic
+		******end virtualhardware of DB1*******
+		virtual system: DB2
+		************************
+			instanceId = 1
+			resourceType = 3
+			elementName = 1 virtual CPU
+			description = Number of virtual CPUs
+			required = true
+			virtualQuantity = 1
+			allocationUnits = null
+		************************
+			instanceId = 2
+			resourceType = 4
+			elementName = 256 MB of memory
+			description = Memory Size
+			required = true
+			virtualQuantity = 256
+			allocationUnits = byte * 2^20
+		************************
+			instanceId = 22001
+			resourceType = 17
+			elementName = Harddisk 1
+			description = null
+			required = true
+			hostResource = ovf:/disk/db_backend
+			addressOnParent = 0
+			parent = 1000
+		************************
+			instanceId = 3
+			resourceType = 10
+			elementName = Ethernet adapter on "VM Network"
+			description = null
+			required = true
+			addressOnParent = null
+			automaticAllocation = true
+			connection = VM Network
+			resourceSubType = PCNet32
+		************************
+			instanceId = 1000
+			resourceType = 6
+			elementName = SCSI Controller 0 - LSI Logic
+			description = null
+			required = true
+			address = 1
+			resourceSubType = LsiLogic
+		******end virtualhardware of DB2*******
+	********end analysis virtualSystem of ContrailPetStore*******
+	analysis VIRTUALSYSTEM: WebTier
+		virtual system: WebTier
+		************************
+			instanceId = 1
+			resourceType = 3
+			elementName = 1 virtual CPU
+			description = Number of virtual CPUs
+			required = true
+			virtualQuantity = 1
+			allocationUnits = null
+		************************
+			instanceId = 2
+			resourceType = 4
+			elementName = 256 MB of memory
+			description = Memory Size
+			required = true
+			virtualQuantity = 256
+			allocationUnits = byte * 2^20
+		************************
+			instanceId = 22001
+			resourceType = 17
+			elementName = Harddisk 1
+			description = null
+			required = true
+			hostResource = ovf:/disk/web
+			addressOnParent = 0
+			parent = 1000
+		************************
+			instanceId = 3
+			resourceType = 10
+			elementName = Ethernet adapter on "VM Network"
+			description = null
+			required = true
+			addressOnParent = null
+			automaticAllocation = true
+			connection = VM Network
+			resourceSubType = PCNet32
+		************************
+			instanceId = 1000
+			resourceType = 6
+			elementName = SCSI Controller 0 - LSI Logic
+			description = null
+			required = true
+			address = 1
+			resourceSubType = LsiLogic
+		******end virtualhardware of WebTier*******
+	********end analysis virtualSystem of WebTier*******
+	analysis VIRTUALSYSTEM: EngineTier
+		virtual system: et1
+		************************
+			instanceId = 1
+			resourceType = 3
+			elementName = 1 virtual CPU
+			description = Number of virtual CPUs
+			required = true
+			virtualQuantity = 1
+			allocationUnits = null
+		************************
+			instanceId = 2
+			resourceType = 4
+			elementName = 256 MB of memory
+			description = Memory Size
+			required = true
+			virtualQuantity = 256
+			allocationUnits = byte * 2^20
+		************************
+			instanceId = 22001
+			resourceType = 17
+			elementName = Harddisk 1
+			description = null
+			required = true
+			hostResource = ovf:/disk/engine_frontend
+			addressOnParent = 0
+			parent = 1000
+		******end virtualhardware of et1*******
+		virtual system: et2
+		************************
+			instanceId = 1
+			resourceType = 3
+			elementName = 1 virtual CPU
+			description = Number of virtual CPUs
+			required = true
+			virtualQuantity = 1
+			allocationUnits = null
+		************************
+			instanceId = 2
+			resourceType = 4
+			elementName = 256 MB of memory
+			description = Memory Size
+			required = true
+			virtualQuantity = 256
+			allocationUnits = byte * 2^20
+		************************
+			instanceId = 22001
+			resourceType = 17
+			elementName = Harddisk 1
+			description = null
+			required = true
+			hostResource = ovf:/disk/engine_worker
+			addressOnParent = 0
+			parent = 1000
+		******end virtualhardware of et2*******
+		virtual system: et3
+		************************
+			instanceId = 1
+			resourceType = 3
+			elementName = 1 virtual CPU
+			description = Number of virtual CPUs
+			required = true
+			virtualQuantity = 1
+			allocationUnits = null
+		************************
+			instanceId = 2
+			resourceType = 4
+			elementName = 256 MB of memory
+			description = Memory Size
+			required = true
+			virtualQuantity = 256
+			allocationUnits = byte * 2^20
+		************************
+			instanceId = 22001
+			resourceType = 17
+			elementName = Harddisk 1
+			description = null
+			required = true
+			hostResource = ovf:/disk/engine_worker
+			addressOnParent = 0
+			parent = 1000
+		******end virtualhardware of et3*******
+		virtual system: et4
+		************************
+			instanceId = 1
+			resourceType = 3
+			elementName = 1 virtual CPU
+			description = Number of virtual CPUs
+			required = true
+			virtualQuantity = 1
+			allocationUnits = null
+		************************
+			instanceId = 2
+			resourceType = 4
+			elementName = 256 MB of memory
+			description = Memory Size
+			required = true
+			virtualQuantity = 256
+			allocationUnits = byte * 2^20
+		************************
+			instanceId = 22001
+			resourceType = 17
+			elementName = Harddisk 1
+			description = null
+			required = true
+			hostResource = ovf:/disk/engine_backend
+			addressOnParent = 0
+			parent = 1000
+		******end virtualhardware of et4*******
+	********end analysis virtualSystem of EngineTier*******
+	analysis VIRTUALSYSTEM: et1
+		virtual system: et1
+		************************
+			instanceId = 1
+			resourceType = 3
+			elementName = 1 virtual CPU
+			description = Number of virtual CPUs
+			required = true
+			virtualQuantity = 1
+			allocationUnits = null
+		************************
+			instanceId = 2
+			resourceType = 4
+			elementName = 256 MB of memory
+			description = Memory Size
+			required = true
+			virtualQuantity = 256
+			allocationUnits = byte * 2^20
+		************************
+			instanceId = 22001
+			resourceType = 17
+			elementName = Harddisk 1
+			description = null
+			required = true
+			hostResource = ovf:/disk/engine_frontend
+			addressOnParent = 0
+			parent = 1000
+		******end virtualhardware of et1*******
+	********end analysis virtualSystem of et1*******
+	analysis VIRTUALSYSTEM: et2
+		virtual system: et2
+		************************
+			instanceId = 1
+			resourceType = 3
+			elementName = 1 virtual CPU
+			description = Number of virtual CPUs
+			required = true
+			virtualQuantity = 1
+			allocationUnits = null
+		************************
+			instanceId = 2
+			resourceType = 4
+			elementName = 256 MB of memory
+			description = Memory Size
+			required = true
+			virtualQuantity = 256
+			allocationUnits = byte * 2^20
+		************************
+			instanceId = 22001
+			resourceType = 17
+			elementName = Harddisk 1
+			description = null
+			required = true
+			hostResource = ovf:/disk/engine_worker
+			addressOnParent = 0
+			parent = 1000
+		******end virtualhardware of et2*******
+	********end analysis virtualSystem of et2*******
+	analysis VIRTUALSYSTEM: et3
+		virtual system: et3
+		************************
+			instanceId = 1
+			resourceType = 3
+			elementName = 1 virtual CPU
+			description = Number of virtual CPUs
+			required = true
+			virtualQuantity = 1
+			allocationUnits = null
+		************************
+			instanceId = 2
+			resourceType = 4
+			elementName = 256 MB of memory
+			description = Memory Size
+			required = true
+			virtualQuantity = 256
+			allocationUnits = byte * 2^20
+		************************
+			instanceId = 22001
+			resourceType = 17
+			elementName = Harddisk 1
+			description = null
+			required = true
+			hostResource = ovf:/disk/engine_worker
+			addressOnParent = 0
+			parent = 1000
+		******end virtualhardware of et3*******
+	********end analysis virtualSystem of et3*******
+	analysis VIRTUALSYSTEM: et4
+		virtual system: et4
+		************************
+			instanceId = 1
+			resourceType = 3
+			elementName = 1 virtual CPU
+			description = Number of virtual CPUs
+			required = true
+			virtualQuantity = 1
+			allocationUnits = null
+		************************
+			instanceId = 2
+			resourceType = 4
+			elementName = 256 MB of memory
+			description = Memory Size
+			required = true
+			virtualQuantity = 256
+			allocationUnits = byte * 2^20
+		************************
+			instanceId = 22001
+			resourceType = 17
+			elementName = Harddisk 1
+			description = null
+			required = true
+			hostResource = ovf:/disk/engine_backend
+			addressOnParent = 0
+			parent = 1000
+		******end virtualhardware of et4*******
+	********end analysis virtualSystem of et4*******
+	analysis VIRTUALSYSTEM: DBTier
+		virtual system: DB_frontend
+		************************
+			instanceId = 1
+			resourceType = 3
+			elementName = 1 virtual CPU
+			description = Number of virtual CPUs
+			required = true
+			virtualQuantity = 1
+			allocationUnits = null
+		************************
+			instanceId = 2
+			resourceType = 4
+			elementName = 256 MB of memory
+			description = Memory Size
+			required = true
+			virtualQuantity = 256
+			allocationUnits = byte * 2^20
+		************************
+			instanceId = 22001
+			resourceType = 17
+			elementName = Harddisk 1
+			description = null
+			required = true
+			hostResource = ovf:/disk/db_frontend
+			addressOnParent = 0
+			parent = 1000
+		******end virtualhardware of DB_frontend*******
+		virtual system: DB1
+		************************
+			instanceId = 1
+			resourceType = 3
+			elementName = 1 virtual CPU
+			description = Number of virtual CPUs
+			required = true
+			virtualQuantity = 1
+			allocationUnits = null
+		************************
+			instanceId = 2
+			resourceType = 4
+			elementName = 256 MB of memory
+			description = Memory Size
+			required = true
+			virtualQuantity = 256
+			allocationUnits = byte * 2^20
+		************************
+			instanceId = 22001
+			resourceType = 17
+			elementName = Harddisk 1
+			description = null
+			required = true
+			hostResource = ovf:/disk/db_backend
+			addressOnParent = 0
+			parent = 1000
+		************************
+			instanceId = 3
+			resourceType = 10
+			elementName = Ethernet adapter on "VM Network"
+			description = null
+			required = true
+			addressOnParent = null
+			automaticAllocation = true
+			connection = VM Network
+			resourceSubType = PCNet32
+		************************
+			instanceId = 1000
+			resourceType = 6
+			elementName = SCSI Controller 0 - LSI Logic
+			description = null
+			required = true
+			address = 1
+			resourceSubType = LsiLogic
+		******end virtualhardware of DB1*******
+		virtual system: DB2
+		************************
+			instanceId = 1
+			resourceType = 3
+			elementName = 1 virtual CPU
+			description = Number of virtual CPUs
+			required = true
+			virtualQuantity = 1
+			allocationUnits = null
+		************************
+			instanceId = 2
+			resourceType = 4
+			elementName = 256 MB of memory
+			description = Memory Size
+			required = true
+			virtualQuantity = 256
+			allocationUnits = byte * 2^20
+		************************
+			instanceId = 22001
+			resourceType = 17
+			elementName = Harddisk 1
+			description = null
+			required = true
+			hostResource = ovf:/disk/db_backend
+			addressOnParent = 0
+			parent = 1000
+		************************
+			instanceId = 3
+			resourceType = 10
+			elementName = Ethernet adapter on "VM Network"
+			description = null
+			required = true
+			addressOnParent = null
+			automaticAllocation = true
+			connection = VM Network
+			resourceSubType = PCNet32
+		************************
+			instanceId = 1000
+			resourceType = 6
+			elementName = SCSI Controller 0 - LSI Logic
+			description = null
+			required = true
+			address = 1
+			resourceSubType = LsiLogic
+		******end virtualhardware of DB2*******
+	********end analysis virtualSystem of DBTier*******
+	analysis VIRTUALSYSTEM: DB_frontend
+		virtual system: DB_frontend
+		************************
+			instanceId = 1
+			resourceType = 3
+			elementName = 1 virtual CPU
+			description = Number of virtual CPUs
+			required = true
+			virtualQuantity = 1
+			allocationUnits = null
+		************************
+			instanceId = 2
+			resourceType = 4
+			elementName = 256 MB of memory
+			description = Memory Size
+			required = true
+			virtualQuantity = 256
+			allocationUnits = byte * 2^20
+		************************
+			instanceId = 22001
+			resourceType = 17
+			elementName = Harddisk 1
+			description = null
+			required = true
+			hostResource = ovf:/disk/db_frontend
+			addressOnParent = 0
+			parent = 1000
+		******end virtualhardware of DB_frontend*******
+	********end analysis virtualSystem of DB_frontend*******
+	analysis VIRTUALSYSTEM: DB1
+		virtual system: DB1
+		************************
+			instanceId = 1
+			resourceType = 3
+			elementName = 1 virtual CPU
+			description = Number of virtual CPUs
+			required = true
+			virtualQuantity = 1
+			allocationUnits = null
+		************************
+			instanceId = 2
+			resourceType = 4
+			elementName = 256 MB of memory
+			description = Memory Size
+			required = true
+			virtualQuantity = 256
+			allocationUnits = byte * 2^20
+		************************
+			instanceId = 22001
+			resourceType = 17
+			elementName = Harddisk 1
+			description = null
+			required = true
+			hostResource = ovf:/disk/db_backend
+			addressOnParent = 0
+			parent = 1000
+		************************
+			instanceId = 3
+			resourceType = 10
+			elementName = Ethernet adapter on "VM Network"
+			description = null
+			required = true
+			addressOnParent = null
+			automaticAllocation = true
+			connection = VM Network
+			resourceSubType = PCNet32
+		************************
+			instanceId = 1000
+			resourceType = 6
+			elementName = SCSI Controller 0 - LSI Logic
+			description = null
+			required = true
+			address = 1
+			resourceSubType = LsiLogic
+		******end virtualhardware of DB1*******
+	********end analysis virtualSystem of DB1*******
+	analysis VIRTUALSYSTEM: DB2
+		virtual system: DB2
+		************************
+			instanceId = 1
+			resourceType = 3
+			elementName = 1 virtual CPU
+			description = Number of virtual CPUs
+			required = true
+			virtualQuantity = 1
+			allocationUnits = null
+		************************
+			instanceId = 2
+			resourceType = 4
+			elementName = 256 MB of memory
+			description = Memory Size
+			required = true
+			virtualQuantity = 256
+			allocationUnits = byte * 2^20
+		************************
+			instanceId = 22001
+			resourceType = 17
+			elementName = Harddisk 1
+			description = null
+			required = true
+			hostResource = ovf:/disk/db_backend
+			addressOnParent = 0
+			parent = 1000
+		************************
+			instanceId = 3
+			resourceType = 10
+			elementName = Ethernet adapter on "VM Network"
+			description = null
+			required = true
+			addressOnParent = null
+			automaticAllocation = true
+			connection = VM Network
+			resourceSubType = PCNet32
+		************************
+			instanceId = 1000
+			resourceType = 6
+			elementName = SCSI Controller 0 - LSI Logic
+			description = null
+			required = true
+			address = 1
+			resourceSubType = LsiLogic
+		******end virtualhardware of DB2*******
+	********end analysis virtualSystem of DB2*******
+*************
+File test No. 1
+	analysis VIRTUALSYSTEM: Small VM
+		virtual system: Small VM
+		************************
+			instanceId = 1
+			resourceType = 3
+			elementName = 1 virtual CPU(s)
+			description = Number of Virtual CPUs
+			required = true
+			virtualQuantity = 1
+			allocationUnits = hertz * 10^6
+		************************
+			instanceId = 2
+			resourceType = 4
+			elementName = 512MB of memory
+			description = Memory Size
+			required = true
+			virtualQuantity = 512
+			allocationUnits = byte * 2^20
+		************************
+			instanceId = 3
+			resourceType = 6
+			elementName = SCSI controller 0
+			description = SCSI Controller
+			required = true
+			address = 0
+			resourceSubType = lsilogic
+		************************
+			instanceId = 4
+			resourceType = 5
+			elementName = IDE 1
+			description = IDE Controller
+			required = true
+			address = 1
+		************************
+			instanceId = 5
+			resourceType = 5
+			elementName = IDE 0
+			description = IDE Controller
+			required = true
+			address = 0
+		************************
+			instanceId = 6
+			resourceType = 14
+			elementName = Floppy drive 1
+			description = Floppy Drive
+			required = false
+			addressOnParent = 0
+			automaticAllocation = false
+		************************
+			instanceId = 7
+			resourceType = 15
+			elementName = CD/DVD Drive 1
+			description = The main CD drive
+			required = false
+			addressOnParent = 0
+			automaticAllocation = false
+			parent = 4
+		************************
+			instanceId = 8
+			resourceType = 10
+			elementName = Network adapter 1
+			description = E1000 ethernet adapter on "VM Network"
+			required = true
+			addressOnParent = 7
+			automaticAllocation = true
+			connection = VM Network
+			resourceSubType = E1000
+		************************
+			instanceId = 9
+			resourceType = 17
+			elementName = Hard disk 1
+			description = The main Hard Disk
+			required = true
+			hostResource = ovf:/disk/vmdisk1
+			addressOnParent = 0
+			parent = 3
+		******end virtualhardware of Small VM*******
+	********end analysis virtualSystem of Small VM*******
+*************
+

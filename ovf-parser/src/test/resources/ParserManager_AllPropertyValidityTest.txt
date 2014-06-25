@@ -1,0 +1,100 @@
+File test No. 0
+Analysis property of: ContrailPetStore
+	key: webserverip type: string UC: true value: null
+	key: engineip0 type: string UC: true value: null
+	key: engineip1 type: string UC: true value: null
+	key: engineip2 type: string UC: true value: null
+	key: engineip3 type: string UC: true value: null
+	key: dbIp type: string UC: true value: null
+Analysis property of: WebTier
+	key: ip type: string UC: false value: 145.168.0.102@VMNetwork0
+	key: webserverip type: string UC: true value: null
+	key: engineip0 type: string UC: true value: null
+	key: engineip1 type: string UC: true value: null
+	key: engineip2 type: string UC: true value: null
+	key: engineip3 type: string UC: true value: null
+	key: dbIp type: string UC: true value: null
+Analysis property of: EngineTier
+	key: webserverip type: string UC: true value: null
+	key: engineip0 type: string UC: true value: null
+	key: engineip1 type: string UC: true value: null
+	key: engineip2 type: string UC: true value: null
+	key: engineip3 type: string UC: true value: null
+	key: dbIp type: string UC: true value: null
+Analysis property of: et1
+	key: ip type: string UC: false value: 145.168.0.100@VMNetwork0
+	key: ip type: string UC: false value: 145.168.0.101@VMNetwork1
+	key: webserverip type: string UC: true value: null
+	key: engineip0 type: string UC: true value: null
+	key: engineip1 type: string UC: true value: null
+	key: engineip2 type: string UC: true value: null
+	key: engineip3 type: string UC: true value: null
+	key: dbIp type: string UC: true value: null
+Analysis property of: et2
+	key: ip type: string UC: false value: 145.168.0.99@VMNetwork1
+	key: webserverip type: string UC: true value: null
+	key: engineip0 type: string UC: true value: null
+	key: engineip1 type: string UC: true value: null
+	key: engineip2 type: string UC: true value: null
+	key: engineip3 type: string UC: true value: null
+	key: dbIp type: string UC: true value: null
+Analysis property of: et3
+	key: ip type: string UC: false value: 145.168.0.98@VMNetwork1
+	key: webserverip type: string UC: true value: null
+	key: engineip0 type: string UC: true value: null
+	key: engineip1 type: string UC: true value: null
+	key: engineip2 type: string UC: true value: null
+	key: engineip3 type: string UC: true value: null
+	key: dbIp type: string UC: true value: null
+Analysis property of: et4
+	key: ip type: string UC: false value: 145.168.0.97@VMNetwork1
+	key: ip type: string UC: false value: 145.168.0.103@VMNetwork2
+	key: webserverip type: string UC: true value: null
+	key: engineip0 type: string UC: true value: null
+	key: engineip1 type: string UC: true value: null
+	key: engineip2 type: string UC: true value: null
+	key: engineip3 type: string UC: true value: null
+	key: dbIp type: string UC: true value: null
+Analysis property of: DBTier
+	key: vm1 type: string UC: true value: null
+	key: webserverip type: string UC: true value: null
+	key: engineip0 type: string UC: true value: null
+	key: engineip1 type: string UC: true value: null
+	key: engineip2 type: string UC: true value: null
+	key: engineip3 type: string UC: true value: null
+	key: dbIp type: string UC: true value: null
+Analysis property of: DB_frontend
+	key: vm1 type: string UC: false value: provaprovaprova
+	key: ip type: string UC: false value: 145.168.0.90@VMNetwork2
+	key: ip type: string UC: false value: 145.168.0.100@VMNetwork3
+	key: webserverip type: string UC: true value: null
+	key: engineip0 type: string UC: true value: null
+	key: engineip1 type: string UC: true value: null
+	key: engineip2 type: string UC: true value: null
+	key: engineip3 type: string UC: true value: null
+	key: dbIp type: string UC: true value: null
+Analysis property of: DB1
+	key: primaryAtBoot type: string UC: false value: yes
+	key: ip type: string UC: false value: 145.168.0.105@VMNetwork3
+	key: vm1 type: string UC: true value: null
+	key: webserverip type: string UC: true value: null
+	key: engineip0 type: string UC: true value: null
+	key: engineip1 type: string UC: true value: null
+	key: engineip2 type: string UC: true value: null
+	key: engineip3 type: string UC: true value: null
+	key: dbIp type: string UC: true value: null
+Analysis property of: DB2
+	key: ip2 type: string UC: true value: null
+	key: ip type: string UC: false value: 145.168.0.92@VMNetwork3
+	key: vm1 type: string UC: true value: null
+	key: webserverip type: string UC: true value: null
+	key: engineip0 type: string UC: true value: null
+	key: engineip1 type: string UC: true value: null
+	key: engineip2 type: string UC: true value: null
+	key: engineip3 type: string UC: true value: null
+	key: dbIp type: string UC: true value: null
+*************
+File test No. 1
+Analysis property of: Small VM
+*************
+

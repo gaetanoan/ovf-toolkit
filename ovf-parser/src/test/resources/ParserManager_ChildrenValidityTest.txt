@@ -1,0 +1,29 @@
+File test No. 0
+Analysis children of: ContrailPetStore
+	[WebTier, EngineTier, DBTier]
+Analysis children of: WebTier
+	[]
+Analysis children of: EngineTier
+	[et1, et2, et3, et4]
+Analysis children of: et1
+	[]
+Analysis children of: et2
+	[]
+Analysis children of: et3
+	[]
+Analysis children of: et4
+	[]
+Analysis children of: DBTier
+	[DB_frontend, DB1, DB2]
+Analysis children of: DB_frontend
+	[]
+Analysis children of: DB1
+	[]
+Analysis children of: DB2
+	[]
+*************
+File test No. 1
+Analysis children of: Small VM
+	[]
+*************
+

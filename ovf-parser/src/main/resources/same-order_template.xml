@@ -1,0 +1,305 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<Envelope xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xmlns="http://schemas.dmtf.org/ovf/envelope/1" xmlns:ovf="http://schemas.dmtf.org/ovf/envelope/1"
+    xmlns:vssd="http://schemas.dmtf.org/wbem/wscim/1/cim-schema/2/CIM_VirtualSystemSettingData"
+    xmlns:rasd="http://schemas.dmtf.org/wbem/wscim/1/cim-schema/2/CIM_ResourceAllocationSettingData">
+
+    <!-- References to all external files -->
+    <References>
+        <!-- Reference to the base image disk -->
+        <File ovf:id="base" ovf:href="base.vmdk" ovf:size="180114671" />
+
+        <!-- Reference to the delta-image disks -->
+        <File ovf:id="server_image" ovf:href="server_image.vmdk"
+            ovf:size="123413" />
+        <File ovf:id="client_image" ovf:href="client_image.vmdk"
+            ovf:size="123413" />
+    </References>
+
+    <!-- Describes meta-information about all virtual disks in the package. 
+        This example is encoded as a delta-disk hierarchy. -->
+    <DiskSection>
+        <Info>Describes the set of virtual disks</Info>
+        <Disk ovf:diskId="base" ovf:fileRef="base" ovf:capacity="4294967296"
+            ovf:populatedSize="1924967692"
+            ovf:format="http://www.vmware.com/specifications/vmdk.html#streamOptimized" />
+
+        <Disk ovf:diskId="server" ovf:fileRef="server_image"
+            ovf:parentRef="base" ovf:capacity="4294967296"
+            ovf:format="http://www.vmware.com/specifications/vmdk.html#streamOptimized" />
+
+        <Disk ovf:diskId="client" ovf:fileRef="client_image"
+            ovf:parentRef="base" ovf:capacity="4294967296"
+            ovf:format="http://www.vmware.com/specifications/vmdk.html#streamOptimized" />
+    </DiskSection>
+
+    <NetworkSection>
+        <Info>List of logical networks used in the package</Info>
+        <Network ovf:name="Network_1">
+            <Description ovf:msgid="network.description">The network used to link the
+                client and the server
+            </Description>
+        </Network>
+    </NetworkSection>
+
+    <!-- Deployment options for the packages <DeploymentOptionSection> <Info>List 
+        of deployment options available in the package</Info> <Configuration ovf:id="minimal"> 
+        <Label ovf:msgid="minimal.label">Minimal</Label> <Description ovf:msgid="minimal.description">Deploy 
+        service with minimal resource use</Description> </Configuration> <Configuration 
+        ovf:id="standard" ovf:default="true"> <Label ovf:msgid="standard.label">Standard</Label> 
+        <Description ovf:msgid="standard.description">Deploy service with standard 
+        resource use</Description> </Configuration> </DeploymentOptionSection> -->
+
+    <!-- Main Collection -->
+    <ResourceAllocationSection ovf:required="false">
+        <Info>Defines minimum reservations for CPU and memory</Info>
+        <!-- Memory -->
+        <Item>
+            <rasd:AllocationUnits>byte * 2^20</rasd:AllocationUnits>
+            <rasd:ElementName>256 MB reservation</rasd:ElementName>
+            <rasd:InstanceID>0</rasd:InstanceID>
+            <rasd:Reservation>256</rasd:Reservation>
+            <rasd:ResourceType>4</rasd:ResourceType>
+        </Item>
+        <Item ovf:configuration="minimal">
+            <rasd:AllocationUnits>byte * 2^20</rasd:AllocationUnits>
+            <rasd:ElementName>128 MB reservation</rasd:ElementName>
+            <rasd:InstanceID>0</rasd:InstanceID>
+            <rasd:Reservation>384</rasd:Reservation>
+            <rasd:ResourceType>4</rasd:ResourceType>
+        </Item>
+        <!-- CPU -->
+        <Item>
+            <rasd:AllocationUnits>MHz</rasd:AllocationUnits>
+            <rasd:ElementName>500 MHz reservation</rasd:ElementName>
+            <rasd:InstanceID>1</rasd:InstanceID>
+            <rasd:Reservation>500</rasd:Reservation>
+            <rasd:ResourceType>3</rasd:ResourceType>
+        </Item>
+        <Item ovf:bound="min">
+            <rasd:AllocationUnits>MHz</rasd:AllocationUnits>
+            <rasd:ElementName>200 MHz reservation</rasd:ElementName>
+            <rasd:InstanceID>1</rasd:InstanceID>
+            <rasd:Reservation>200</rasd:Reservation>
+            <rasd:ResourceType>3</rasd:ResourceType>
+        </Item>
+        <Item ovf:bound="max">
+            <rasd:AllocationUnits>MHz</rasd:AllocationUnits>
+            <rasd:ElementName>800 MHz reservation</rasd:ElementName>
+            <rasd:InstanceID>1</rasd:InstanceID>
+            <rasd:Reservation>800</rasd:Reservation>
+            <rasd:ResourceType>3</rasd:ResourceType>
+        </Item>
+    </ResourceAllocationSection>
+    <VirtualSystemCollection ovf:id="Application_Client_server">
+        <!-- <Info>The packaging of the Contrail PetStoreService multi-tier application</Info> -->
+        <Name>Application Client Server</Name>
+        <!-- Overall information about the product -->
+        <ProductSection>
+            <Info>Describes product information for the service</Info>
+            <Product>Application to share information from client to server
+            </Product>
+            <Vendor>Cnr test</Vendor>
+            <Version>0.1</Version>
+            <FullVersion>0.1</FullVersion>
+            <!-- <ProductUrl>http://www.vmware.com/go/ovf</ProductUrl> -->
+            <!-- <VendorUrl>http://www.vmware.com/</VendorUrl> -->
+
+            <Category ovf:msgid="category.network">Network properties</Category>
+
+            <!-- NB: these are the properties for the actual IPs for the VMs. This 
+                kind of information is unused right now. -->
+            <!-- <Property ovf:key="webserverip" ovf:type="string" ovf:userConfigurable="true"> -->
+            <!-- <Label ovf:msgid="property.webserverip.label">IP for web server</Label> -->
+            <!-- <Description ovf:msgid="property.webserverip.description">IP address 
+                of the service</Description> -->
+            <!-- </Property> -->
+
+            <!-- <Property ovf:key="engineip0" ovf:type="string" ovf:userConfigurable="true"> -->
+            <!-- <Label ovf:msgid="property.engineip0.label">IP for engine emit.</Label> -->
+            <!-- <Description ovf:msgid="property.engineip.description">Primary IP 
+                address of the engine emitter node</Description> -->
+            <!-- </Property> -->
+            <!-- <Property ovf:key="engineip1" ovf:type="string" ovf:userConfigurable="true"> -->
+            <!-- <Label ovf:msgid="property.engineip1.label">IP for engine w1</Label> -->
+            <!-- <Description ovf:msgid="property.engineip.description">Primary IP 
+                address of the engine worker node 1</Description> -->
+            <!-- </Property> -->
+            <!-- <Property ovf:key="engineip2" ovf:type="string" ovf:userConfigurable="true"> -->
+            <!-- <Label ovf:msgid="property.engineip2.label">IP for engine w2</Label> -->
+            <!-- <Description ovf:msgid="property.engineip.description">Primary IP 
+                address of the engine worker node 2</Description> -->
+            <!-- </Property> -->
+            <!-- <Property ovf:key="engineip3" ovf:type="string" ovf:userConfigurable="true"> -->
+            <!-- <Label ovf:msgid="property.engineip3.label">IP for engine coll.</Label> -->
+            <!-- <Description ovf:msgid="property.engineip.description">Primary IP 
+                address of the engine collector node</Description> -->
+            <!-- </Property> -->
+
+            <!-- <Property ovf:key="dbip" ovf:type="string" ovf:userConfigurable="true"> -->
+            <!-- <Label ovf:msgid="property.dpip.label">IP for DB</Label> -->
+            <!-- <Description ovf:msgid="property.dpip2.description">Primary IP address 
+                for the database</Description> -->
+            <!-- </Property> -->
+        </ProductSection>
+
+        <ResourceAllocationSection ovf:required="false">
+            <Info>Defines minimum reservations for CPU and memory</Info>
+            <!-- Memory -->
+            <Item>
+                <rasd:AllocationUnits>byte * 2^20</rasd:AllocationUnits>
+                <rasd:ElementName>512 MB reservation</rasd:ElementName>
+                <rasd:InstanceID>0</rasd:InstanceID>
+                <rasd:Reservation>512</rasd:Reservation>
+                <rasd:ResourceType>4</rasd:ResourceType>
+            </Item>
+            <!-- Minimal Memory requirements -->
+            <Item ovf:configuration="minimal">
+                <rasd:AllocationUnits>byte * 2^20</rasd:AllocationUnits>
+                <rasd:ElementName>384 MB reservation</rasd:ElementName>
+                <rasd:InstanceID>0</rasd:InstanceID>
+                <rasd:Reservation>384</rasd:Reservation>
+                <rasd:ResourceType>4</rasd:ResourceType>
+            </Item>
+            <!-- CPU -->
+            <Item>
+                <rasd:AllocationUnits>MHz</rasd:AllocationUnits>
+                <rasd:ElementName>200 MHz reservation</rasd:ElementName>
+                <rasd:InstanceID>1</rasd:InstanceID>
+                <rasd:Reservation>200</rasd:Reservation>
+                <rasd:ResourceType>3</rasd:ResourceType>
+            </Item>
+            <Item ovf:bound="min">
+                <rasd:AllocationUnits>MHz</rasd:AllocationUnits>
+                <rasd:ElementName>100 MHz reservation</rasd:ElementName>
+                <rasd:InstanceID>1</rasd:InstanceID>
+                <rasd:Reservation>100</rasd:Reservation>
+                <rasd:ResourceType>3</rasd:ResourceType>
+            </Item>
+            <Item ovf:bound="max">
+                <rasd:AllocationUnits>MHz</rasd:AllocationUnits>
+                <rasd:ElementName>300 MHz reservation</rasd:ElementName>
+                <rasd:InstanceID>1</rasd:InstanceID>
+                <rasd:Reservation>300</rasd:Reservation>
+                <rasd:ResourceType>3</rasd:ResourceType>
+            </Item>
+        </ResourceAllocationSection>
+
+        <StartupSection>
+            <Info>Specifies how the composite service is powered-on and off
+            </Info>
+
+            <Item ovf:id="Server" ovf:order="1" ovf:startDelay="60"
+                ovf:startAction="powerOn" ovf:waitingForGuest="true" ovf:stopDelay="120"
+                ovf:stopAction="guestShutdown" />
+
+            <Item ovf:id="Client" ovf:order="1" ovf:startAction="powerOn"
+                ovf:waitingForGuest="true" ovf:stopDelay="100" ovf:stopAction="guestShutdown" />
+
+        </StartupSection>
+
+        <VirtualSystem ovf:id="Server">
+            <Info>The virtual machine containing the server-side application
+            </Info>
+            <ProductSection>
+                <Info>Describes the product information</Info>
+                <Product>Cnr Server</Product>
+                <Vendor>Cnr</Vendor>
+                <Version>0.0.1</Version>
+                <FullVersion>0.0.1</FullVersion>
+
+                <Property ovf:key="externalIp" ovf:value="Network_1"
+                    ovf:type="string"></Property>
+            </ProductSection>
+
+            <VirtualHardwareSection>
+                <Info>128 MB, 1 CPU, 1 disk, 1 nic virtual machine</Info>
+                <System>
+                    <vssd:ElementName>Virtual Hardware Family</vssd:ElementName>
+                    <vssd:InstanceID>0</vssd:InstanceID>
+                    <vssd:VirtualSystemType>vmx-04</vssd:VirtualSystemType>
+                </System>
+                <Item>
+                    <rasd:Description>Number of virtual CPUs</rasd:Description>
+                    <rasd:ElementName>1 virtual CPU</rasd:ElementName>
+                    <rasd:InstanceID>1</rasd:InstanceID>
+                    <rasd:ResourceType>3</rasd:ResourceType>
+                    <rasd:VirtualQuantity>1</rasd:VirtualQuantity>
+                </Item>
+                <Item>
+                    <rasd:AllocationUnits>byte * 2^20</rasd:AllocationUnits>
+                    <rasd:Description>Memory Size</rasd:Description>
+                    <rasd:ElementName>128 MB of memory</rasd:ElementName>
+                    <rasd:InstanceID>2</rasd:InstanceID>
+                    <rasd:ResourceType>4</rasd:ResourceType>
+                    <rasd:VirtualQuantity>128</rasd:VirtualQuantity>
+                </Item>
+                <Item>
+                    <rasd:AddressOnParent>0</rasd:AddressOnParent>
+                    <rasd:ElementName>Harddisk 1</rasd:ElementName>
+                    <rasd:HostResource>ovf:/disk/server_image</rasd:HostResource>
+                    <rasd:InstanceID>22001</rasd:InstanceID>
+                    <rasd:Parent>1000</rasd:Parent>
+                    <rasd:ResourceType>17</rasd:ResourceType>
+                </Item>
+                <Item>
+                    <rasd:AutomaticAllocation>true</rasd:AutomaticAllocation>
+                    <rasd:Connection>VM Network</rasd:Connection>
+                    <rasd:ElementName>Ethernet adapter on "VM Network"
+                    </rasd:ElementName>
+                    <rasd:InstanceID>3</rasd:InstanceID>
+                    <rasd:ResourceSubType>PCNet32</rasd:ResourceSubType>
+                    <rasd:ResourceType>10</rasd:ResourceType>
+                </Item>
+            </VirtualHardwareSection>
+        </VirtualSystem>
+
+        <VirtualSystem ovf:id="Client">
+            <Info>The client used to interrogation the server
+            </Info>
+            <ProductSection>
+                <Info>Describes the product information</Info>
+                <Product>Cnr Client</Product>
+                <Vendor>Cnr</Vendor>
+                <Version>0.0.1</Version>
+                <FullVersion>0.0.1</FullVersion>
+
+                <Property ovf:key="externalIp" ovf:value="Network_1"
+                    ovf:type="string"></Property>
+            </ProductSection>
+            <VirtualHardwareSection>
+                <System>
+                    <vssd:ElementName>Virtual Hardware Family</vssd:ElementName>
+                    <vssd:InstanceID>0</vssd:InstanceID>
+                    <vssd:VirtualSystemType>vmx-04</vssd:VirtualSystemType>
+                </System>
+                <Item>
+                    <rasd:Description>Number of virtual CPUs</rasd:Description>
+                    <rasd:ElementName>1 virtual CPU</rasd:ElementName>
+                    <rasd:InstanceID>1</rasd:InstanceID>
+                    <rasd:ResourceType>3</rasd:ResourceType>
+                    <rasd:VirtualQuantity>1</rasd:VirtualQuantity>
+                </Item>
+                <Item>
+                    <rasd:AllocationUnits>byte * 2^20</rasd:AllocationUnits>
+                    <rasd:Description>Memory Size</rasd:Description>
+                    <rasd:ElementName>128 MB of memory</rasd:ElementName>
+                    <rasd:InstanceID>2</rasd:InstanceID>
+                    <rasd:ResourceType>4</rasd:ResourceType>
+                    <rasd:VirtualQuantity>128</rasd:VirtualQuantity>
+                </Item>
+                <Item>
+                    <rasd:AddressOnParent>0</rasd:AddressOnParent>
+                    <rasd:ElementName>Harddisk 1</rasd:ElementName>
+                    <rasd:HostResource>ovf:/disk/client_image</rasd:HostResource>
+                    <rasd:InstanceID>22001</rasd:InstanceID>
+                    <rasd:Parent>1000</rasd:Parent>
+                    <rasd:ResourceType>17</rasd:ResourceType>
+                </Item>
+            </VirtualHardwareSection>
+        </VirtualSystem>
+
+    </VirtualSystemCollection>
+
+</Envelope>

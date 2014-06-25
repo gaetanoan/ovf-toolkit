@@ -1,0 +1,149 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<Envelope xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns="http://schemas.dmtf.org/ovf/envelope/2" xmlns:ovf="http://schemas.dmtf.org/ovf/envelope/2"
+	xmlns:vssd="http://schemas.dmtf.org/wbem/wscim/1/cim-schema/2/CIM_VirtualSystemSettingData"
+	xmlns:rasd="http://schemas.dmtf.org/wbem/wscim/1/cim-schema/2/CIM_ResourceAllocationSettingData"> 
+    
+     <!-- References to all external files -->
+	<References>
+		<!-- Use existing ONE image ! -->
+		<File ovf:id="ttylinux-1" ovf:href="/srv/cloud/images/ttylinux.img" ovf:size="57359872" />
+		<File ovf:id="ttylinux-2" ovf:href="/srv/cloud/images/ttylinux.img" ovf:size="57359872" />
+	</References>
+	
+	<!-- Describes meta-information about all virtual disks in the package. 
+		This example is encoded as a delta-disk hierarchy. -->
+	<DiskSection>
+		<Info>Describes the set of virtual disks</Info>
+		<Disk ovf:diskId="test-disk1" ovf:fileRef="ttylinux-1" ovf:capacity="1073741824"
+			ovf:populatedSize="157359872"
+			ovf:format="http://www.vmware.com/specifications/vmdk.html#streamOptimized" />
+
+		<Disk ovf:diskId="test-disk2" ovf:fileRef="ttylinux-2" ovf:capacity="1073741824"
+			ovf:populatedSize="157359872"
+			ovf:format="http://www.vmware.com/specifications/vmdk.html#streamOptimized" />
+	</DiskSection>
+	
+	<ovf:SharedDiskSection>
+	  <Info>Describes the set of virtual disks shared between VMs</Info>
+	  <ovf:SharedDisk ovf:diskId="datadisk" 
+			  ovf:capacity="8589934592" 
+			  ovf:format=
+			    "http://www.xtreemfs.org/specifications/xtreemfsformat"/>
+	</ovf:SharedDiskSection>
+	
+	<!-- Describes all networks used in the package -->
+	<NetworkSection>
+		<Info>List of logical networks used in the package</Info>
+		<Network ovf:name="VEP private network">
+			<Description ovf:msgid="network.description">The network used to link the web server node and the engine frontend node.</Description>
+		</Network>
+	</NetworkSection>
+	 
+	<!-- ttylinux double images Collection -->
+	<VirtualSystemCollection ovf:id="VEP_Test_Application">
+		<Info>The packaging of the double ttylinux multi-tier application</Info>
+		<Name>VEP Test Application</Name>
+		<ProductSection>
+			<Info>Shared XtreemFS volume for all virtual machines</Info>
+			<Property ovf:key="VolumePath"  
+                                  ovf:type="string"
+                                  ovf:userConfigurable="true">
+			</Property>
+		</ProductSection>
+		<VirtualSystem ovf:id="ttylinux1">
+			<Info>ttylinux-server</Info>
+			<ProductSection>
+				<Info>Product information and service settings</Info>
+				<Property ovf:key="ip@VEP private network@3" ovf:value="dhcp@private" ovf:type="string"></Property>
+                <Property ovf:key="VNCAllowedIp" ovf:value="0.0.0.0" ovf:type="string"></Property>
+			</ProductSection>
+			<VirtualHardwareSection>
+				<Info>256 MB, 1 CPU, 1 disk, 1 nic virtual machine</Info>
+				<System>
+					<vssd:ElementName>Virtual Hardware Family</vssd:ElementName>
+					<vssd:InstanceID>0</vssd:InstanceID>
+					<vssd:VirtualSystemType>vmx-04</vssd:VirtualSystemType>
+				</System>
+				<Item>
+					<rasd:Description>Number of virtual CPUs</rasd:Description>
+					<rasd:ElementName>1 virtual CPU</rasd:ElementName>
+					<rasd:InstanceID>1</rasd:InstanceID>
+					<rasd:ResourceType>3</rasd:ResourceType>
+					<rasd:VirtualQuantity>1</rasd:VirtualQuantity>
+				</Item>
+				<Item>
+					<rasd:AllocationUnits>byte * 2^20</rasd:AllocationUnits>
+					<rasd:Description>Memory Size</rasd:Description>
+					<rasd:ElementName>256 MB of memory</rasd:ElementName>
+					<rasd:InstanceID>2</rasd:InstanceID>
+					<rasd:ResourceType>4</rasd:ResourceType>
+					<rasd:VirtualQuantity>512</rasd:VirtualQuantity>
+				</Item>
+				<Item>
+					<rasd:AddressOnParent>0</rasd:AddressOnParent>
+					<rasd:ElementName>Harddisk 1</rasd:ElementName>
+					<rasd:HostResource>ovf:/disk/test-disk1</rasd:HostResource>
+					<rasd:InstanceID>22001</rasd:InstanceID>
+					<rasd:Parent>1000</rasd:Parent>
+					<rasd:ResourceType>17</rasd:ResourceType>
+				</Item>
+				<Item>
+					<rasd:AutomaticAllocation>true</rasd:AutomaticAllocation>
+					<rasd:Connection>VEP private network</rasd:Connection>
+					<rasd:ElementName>Ethernet adapter on "vep public network"</rasd:ElementName>
+					<rasd:InstanceID>3</rasd:InstanceID>
+					<rasd:ResourceSubType>PCNet32</rasd:ResourceSubType>
+					<rasd:ResourceType>10</rasd:ResourceType>
+				</Item>
+			</VirtualHardwareSection>
+		</VirtualSystem>
+		<VirtualSystem ovf:id="ttylinux-db">
+			<Info>ttylinux</Info>
+			<ProductSection>
+				<Info>Product information and service settings</Info>
+				<Property ovf:key="ip@VEP private network@3" ovf:value="dhcp@private" ovf:type="string"></Property>
+			</ProductSection>
+			<VirtualHardwareSection>
+				<Info>256 MB, 1 CPU, 1 disk, 1 nic virtual machine</Info>
+				<System>
+					<vssd:ElementName>Virtual Hardware Family</vssd:ElementName>
+					<vssd:InstanceID>0</vssd:InstanceID>
+					<vssd:VirtualSystemType>vmx-04</vssd:VirtualSystemType>
+				</System>
+				<Item>
+					<rasd:Description>Number of virtual CPUs</rasd:Description>
+					<rasd:ElementName>1 virtual CPU</rasd:ElementName>
+					<rasd:InstanceID>1</rasd:InstanceID>
+					<rasd:ResourceType>3</rasd:ResourceType>
+					<rasd:VirtualQuantity>1</rasd:VirtualQuantity>
+				</Item>
+				<Item>
+					<rasd:AllocationUnits>byte * 2^20</rasd:AllocationUnits>
+					<rasd:Description>Memory Size</rasd:Description>
+					<rasd:ElementName>256 MB of memory</rasd:ElementName>
+					<rasd:InstanceID>2</rasd:InstanceID>
+					<rasd:ResourceType>4</rasd:ResourceType>
+					<rasd:VirtualQuantity>256</rasd:VirtualQuantity>
+				</Item>
+				<Item>
+					<rasd:AddressOnParent>0</rasd:AddressOnParent>
+					<rasd:ElementName>Harddisk 1</rasd:ElementName>
+					<rasd:HostResource>ovf:/disk/test-disk2</rasd:HostResource>
+					<rasd:InstanceID>22001</rasd:InstanceID>
+					<rasd:Parent>1000</rasd:Parent>
+					<rasd:ResourceType>17</rasd:ResourceType>
+				</Item>
+				<Item>
+					<rasd:AutomaticAllocation>true</rasd:AutomaticAllocation>
+					<rasd:Connection>VEP private network</rasd:Connection>
+					<rasd:ElementName>Ethernet adapter on "vep public network"</rasd:ElementName>
+					<rasd:InstanceID>3</rasd:InstanceID>
+					<rasd:ResourceSubType>PCNet32</rasd:ResourceSubType>
+					<rasd:ResourceType>10</rasd:ResourceType>
+				</Item>
+			</VirtualHardwareSection>
+		</VirtualSystem>
+	</VirtualSystemCollection>
+</Envelope>
