@@ -21,13 +21,14 @@ public class SplitRemergeValidation {
 	 * Test code to validate splitting and re-merging application
 	 */
 	
-	public static void main(String[] args) throws Exception {	
+	public static void main(String[] args) throws Exception {
+		final int VSNUMBER = 100;
 		String filetoParse="src/main/resources/Ovf1VS";
 		int howManyFile = 100;
 		ApplicationDescriptor appDesc = OVFParser.ParseOVF(URI.create(filetoParse+".ovf"));
 		for(int i=1; i<howManyFile;i++){	
 			System.out.println("-------------------------");
-			String filename = ValidationExperiment.generateOvfs(appDesc, i+1);
+			String filename = ValidationExperiment.generateOvfs(appDesc, VSNUMBER, i);
 			splitRemergeAndCompare(filename);
 		}
 		

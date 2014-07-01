@@ -29,11 +29,11 @@ public class ValidationExperiment {
 		 * Test code to validate parsing and rendering
 		 */
 		String filetoParse="src/main/resources/Ovf1VS";
-		int howManyFile = 100;
+		int howManyFile = 10;
 		ApplicationDescriptor appDesc = OVFParser.ParseOVF(URI.create(filetoParse+".ovf"));
 		for(int i=0; i<howManyFile;i++){	
 			System.out.println("-------------------------");
-			String filename = generateOvfs(appDesc, i+1);
+			String filename = generateOvfs(appDesc, 100, i);
 			ApplicationDescriptor application = OVFParser.ParseOVF(URI.create(filename+".ovf"));
 			Renderer.RenderOVF(application, "", filename+"_re-rendered");
 			Document ovfD  = TestOVFParser.getDOMfromOVF(filename+"_re-rendered.ovf");
@@ -53,8 +53,8 @@ public class ValidationExperiment {
 	 * @param vsNumber
 	 * @throws Exception
 	 */
-	public static String generateOvfs(ApplicationDescriptor appDesc, int vsNumber) throws Exception{
-		String filename="/tmp/Ovf"+vsNumber+"VS";
+	public static String generateOvfs(ApplicationDescriptor appDesc, int vsNumber, int indexName) throws Exception{
+		String filename="/tmp/Ovf"+vsNumber+"VS"+"-"+indexName;
 		File file = new File(filename+".ovf");
 		if(!file.exists()){
 			ApplicationDescriptor appGenerated = TestOVFParser.generateApplication(appDesc,vsNumber);
